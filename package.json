@@ -1,6 +1,7 @@
 {
   "name": "bps",
   "version": "0.1.0",
+  "homepage":"/index",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
