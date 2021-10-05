@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import {Form, Input, Button} from "antd"
 import ExtendDiv from "../../ExtendDiv";
-import {NavLink,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {useSelector, shallowEqual} from "react-redux"
 import Spinner from  "../../Spinner"
 
@@ -28,23 +28,21 @@ const onSubmit=()=>{
 <Form
      form={form}
      name="basic"
-      
       labelCol={{
         span: 8,
       }}
       wrapperCol={{
-        span: 16,
+        span: 20,
       }}
-      
     >
       
       <Form.Item
-        label="Email/Mobile No:"
+        label="Email / Mobile No"
         name="email"
         rules={[
           {
             required: true,
-            message: 'Please input your email address!',
+            message: 'Please input your email address or mobile number',
           },
         ]}
       >
@@ -55,15 +53,15 @@ const onSubmit=()=>{
       
       <Form.Item
         wrapperCol={{
-          offset: 8,
-          span: 16,
+          offset: 10,
+          span: 25,
         }}
       >
         <Button type="primary" htmlType="submit" onClick={onSubmit}>
-        Send
+        Get new password
         </Button> 
 
-        <NavLink to="/index" style={{ marginLeft:"15px"}}> Login here</NavLink>
+        
       </Form.Item>
     </Form>
 

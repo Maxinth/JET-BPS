@@ -32,21 +32,21 @@ loading ?(
 ):(
 islogged? <Redirect to="/index/dashboard"/>
 :
-<ExtendDiv>
 
+<ExtendDiv>
 <Form 
 form={form}
       name="basic"
       labelCol={{
-        span: 8,
+        span: 5,
       }}
       wrapperCol={{
-        span: 16,
+        span: 20,
       }}
     >
       <Form.Item
         label="Username"
-        name="email"
+        name="username"
         rules={[
           {
             required: true,
@@ -73,15 +73,15 @@ form={form}
     
       <Form.Item
         wrapperCol={{
-          offset: 8,
-          span: 18,
+          offset: 5,
+          span: 20,
         }}
       >
         <Button type="primary" htmlType="submit" onClick={onSubmit}>
           Login
         </Button> 
 
-        <NavLink to="/index/forgot" style={{ marginLeft:"15px"}}> Forgot Password?</NavLink>
+        <NavLink to="/index/forgot" style={{ marginLeft:"20px"}}> Forgot Password?</NavLink>
       </Form.Item>
     </Form>
 
