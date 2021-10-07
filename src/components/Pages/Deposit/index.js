@@ -1,23 +1,8 @@
-import React from 'react'
-import{Container,Row,Col} from 'react-bootstrap'
-//import classes from "./index.module.css"
+import React from "react";
+import DepositPage from "../../DepositPageComps";
 
+const Deposit = () => {
+  return <DepositPage />;
+};
 
-
-
-
-const Deposit=()=>{
- 
- 
-
-
-  return(
-<>
-  
-<span>deposit</span>
-</>
-  )
-}
-
-
-export default Deposit
+export default Deposit;
