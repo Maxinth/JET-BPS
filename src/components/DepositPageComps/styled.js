@@ -26,20 +26,6 @@ const InputBox = styled.input`
   }
 `;
 
-const Container = styled.section`
-  padding: 1rem 2rem;
-  width: 100%;
-  & > ${InputBox} {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const GreyBox = styled.div`
   display: flex;
   justify-content: center;
@@ -92,6 +78,23 @@ const InnerBox = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+`;
+
+const Container = styled.section`
+  padding: 1rem 2rem;
+  width: 100%;
+  & > ${InputBox} {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & ${InnerBox} ${InnerBox} {
+    margin-top: 4rem;
+  }
 `;
 
 export { InnerBox, Container, InputBox, Label, GreyBox, Span };
