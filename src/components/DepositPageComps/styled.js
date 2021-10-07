@@ -45,7 +45,7 @@ const GreyBox = styled.div`
   justify-content: center;
   align-items: center;
   color: grey;
-  border: 3px solid #333;
+  border: 3px solid grey;
   padding: 0.5rem;
   font-size: 1.1rem;
   border-radius: 5px;
@@ -77,6 +77,12 @@ const Span = styled.span`
   & + ${InputBox} {
     width: 60%;
     /* flex: 1; */
+  }
+
+  &.req {
+    color: red;
+    /* position:relative; */
+    margin-right: 0.1rem;
   }
 `;
 

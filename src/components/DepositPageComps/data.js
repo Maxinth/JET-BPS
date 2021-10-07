@@ -1,1 +1,1 @@
-export const data = [{}];
+export const paymentReset = { cash: false, voucher: false };
