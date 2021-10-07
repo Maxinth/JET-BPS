@@ -46,7 +46,7 @@ const GreyBox = styled.div`
   align-items: center;
   color: grey;
   border: 3px solid #333;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 1.1rem;
   border-radius: 5px;
   width: 80%;
@@ -58,10 +58,22 @@ const Label = styled.label`
   align-items: center;
   max-width: 900px;
   width: 100%;
+  margin-bottom: 0.5rem;
+  ${({ isBold }) =>
+    isBold &&
+    css`
+      & ${GreyBox} {
+        font-weight: bolder;
+        text-transform: uppercase;
+        /* color: #333; */
+        font-size: 1.4rem;
+      }
+    `}
 `;
 
 const Span = styled.span`
   margin-right: 0.3rem;
+  font-weight: bold;
   & + ${InputBox} {
     width: 60%;
     /* flex: 1; */

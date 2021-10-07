@@ -1,8 +1,8 @@
 import { Label, InputBox, GreyBox, Span } from "./styled";
 
-const InputLabel = ({ type, textVal, labelName }) => {
+const InputLabel = ({ type, textVal, labelName, bold = false }) => {
   return (
-    <Label>
+    <Label isBold={bold}>
       <Span>{labelName}</Span>
       {type === "search" && <InputBox />}
       {type === "detail" && <GreyBox>{textVal}</GreyBox>}

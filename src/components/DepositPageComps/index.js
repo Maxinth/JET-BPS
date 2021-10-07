@@ -25,16 +25,19 @@ const DepositPage = () => {
           textVal="$23,400"
           type="detail"
           labelName="Amount to Deposit"
+          bold={true}
         />
         <InputLabel
-          textVal="$78, 000"
+          textVal="$78,000"
           type="detail"
           labelName="Approved Amount"
+          bold={true}
         />
         <InputLabel
           textVal="APPROVED"
           type="detail"
           labelName="Application Status"
+          bold={true}
         />
       </InnerBox>
     </Container>
