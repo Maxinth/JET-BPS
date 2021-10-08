@@ -53,8 +53,8 @@ const {pathname}=useLocation()
 
   return(
     <>
-<ListItem disablePadding className={even===props.event? classes.active:null} onClick={onToggle}>
-<Link to={props.path}>
+<ListItem  disablePadding className={even===props.event? classes.active:null} onClick={onToggle}>
+<Link style={{textDecoration:'none'}} to={props.path}>
             <ListItemButton>
               <ListItemIcon>
                 {props.Icon}
