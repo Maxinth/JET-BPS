@@ -10,6 +10,9 @@ import {
 } from '@mui/icons-material';
 import TableComponent from '../TableComponent';
 
+const heading=["Date","Refrence No","Beneficiary details Wallet",
+  "Deposit Received","Subsidy Amount","Total value"]
+
 const data=
    [
     { "id": 1, 
@@ -72,24 +75,24 @@ const [value, setValue] = React.useState([null, null]);
 </Col>
  </Row>
 
-  <Row style={{ padding:'20px' }}>
-<Col md={6}>
+  <Row >
+<Col md={6} style={{ padding:'20px' }}>
   <RangePicker size="large" style={{width:'100%'}}/>
   </Col>
-<Col md={4}>
+<Col md={5} style={{ padding:'20px' }}>
 
 <Input size="large" style={{ borderRadius:'50px',width:'100%' }} 
 placeholder="search any column" 
 prefix={<FindInPageSharp />}
 />
 </Col>
-<Col md={2}></Col>
+<Col md={1}></Col>
   </Row>
 <Row>
 <Col md={12}>
 <Box sx={{padding:"10px"}}>
 <Paper elevation={3} >
-<TableComponent data={data}/>
+<TableComponent data={data} heading={heading}/>
 </Paper>
 </Box>
 </Col>

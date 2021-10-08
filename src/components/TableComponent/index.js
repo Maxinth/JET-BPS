@@ -5,8 +5,6 @@ import TableHeader from '../TableHeader'
 
 const TableComponent=(props)=>{
 
-  const heading=["Date","Refrence No","Beneficiary details Wallet",
-  "Deposit Received","Subsidy Amount","Total value"]
 
   
 
@@ -14,12 +12,12 @@ const TableComponent=(props)=>{
 <>
 <Table striped hover responsive>
   <thead>
-    <TableHeader heading={heading}/>
+    <TableHeader heading={props.heading}/>
   </thead>
   <tbody>
     {
-    props.data.map((row)=>
-      <tr>
+    props.data.map((row,index)=>
+      <tr key={index}>
   <td>{row.date}</td>
  <td>{row.ref_no}</td>
  <td>{row.name}{"  "} { row.wallet}</td>
