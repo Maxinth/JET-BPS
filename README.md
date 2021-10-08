@@ -1,3 +1,24 @@
+
+# Project Requirement and must considered
+Input element=> Material UI Textfields
+
+state management=> redux-toolkit
+
+
+Layout element=>react bootstrap component
+
+
+Icons=>Material UI
+
+
+styling=>styled-component, css modules, inline styling,
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
