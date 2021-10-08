@@ -1,6 +1,38 @@
+.Drawer{
+  display:none;
+}
+
+.appDraw{
+  background-color: rgb(32, 24, 43);
+  height:fit-content;
+  padding:0% !important;
+  color:white ;
+  
+}
+
+.appDraw ul li a{
+  text-decoration:none;
+  color:white !important;
+  width:100% !important;
+}
+.appDraw ul li:hover{
+cursor:pointer;
+}
+
 
 @media screen and (max-width: 763px) {
   .tog_icon{
     display:inline-block !important;
   }
+  .Drawer{
+    display:initial;
+  }
+  .appDraw{
+    background-color: rgb(32, 24, 43) !important;
+    height:fit-content;
+    padding:0% !important;
+    color:white;
+    
+  }
+
 }

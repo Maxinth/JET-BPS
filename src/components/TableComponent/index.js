@@ -8,11 +8,11 @@ const TableComponent=(props)=>{
   const heading=["Date","Refrence No","Beneficiary details Wallet",
   "Deposit Received","Subsidy Amount","Total value"]
 
-  console.log(props.data)
+  
 
   return(
 <>
-<Table striped bordered hover responsive>
+<Table striped hover responsive>
   <thead>
     <TableHeader heading={heading}/>
   </thead>

@@ -1,11 +1,13 @@
 import React from 'react'
 import{Row,Col} from 'react-bootstrap'
 //import classes from "./index.module.css"
-import { DatePicker,Input} from 'antd';
+import { DatePicker,Input,Space} from 'antd';
 import CardComponent from '../CardComponent';
+import {Paper,Box} from "@mui/material"
 import {
-  SearchOutlined
-} from '@ant-design/icons';
+  
+  FindInPageSharp
+} from '@mui/icons-material';
 import TableComponent from '../TableComponent';
 
 const data=
@@ -37,8 +39,6 @@ const data=
       "date":"2/6/2020",
       "wallet":"2569786427345",
       "total_val":"58000"
-      
-
     },
     { "id": 4, 
       "name": "Form1Table", 
@@ -56,26 +56,42 @@ const data=
 const DashBoard=()=>{
  
   const { RangePicker } = DatePicker;
-
+const [value, setValue] = React.useState([null, null]);
 
   return(
 <>
-  <CardComponent/>
-  <Row style={{ padding:'17px' }}>
-<Col >
-  <RangePicker size="large"/>
+<Row style={{ padding:'20px' }}>
+<Col md={4}>
+ <CardComponent Title={'Wallet Balance'} subTitle={"$800,0000"}/>
+</Col>
+<Col md={4}>
+ <CardComponent Title={'Total Funds Received'} subTitle={"$800,0000"}/>
+</Col>
+<Col md={4}>
+ <CardComponent Title={'Total Disbursement'} subTitle={"$800,0000"}/>
+</Col>
+ </Row>
+
+  <Row style={{ padding:'20px' }}>
+<Col md={6}>
+  <RangePicker size="large" style={{width:'100%'}}/>
   </Col>
-<Col>
-<Input size="large" style={{ borderRadius:'50px' }} 
+<Col md={4}>
+
+<Input size="large" style={{ borderRadius:'50px',width:'100%' }} 
 placeholder="search any column" 
-prefix={<SearchOutlined />}
+prefix={<FindInPageSharp />}
 />
 </Col>
 <Col md={2}></Col>
   </Row>
 <Row>
 <Col md={12}>
+<Box sx={{padding:"10px"}}>
+<Paper elevation={3} >
 <TableComponent data={data}/>
+</Paper>
+</Box>
 </Col>
 </Row>
 </>

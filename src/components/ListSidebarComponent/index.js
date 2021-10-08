@@ -1,5 +1,5 @@
 import React from 'react'
-import {List,Box} from '@mui/material'
+import {List,Box,Divider} from '@mui/material'
 import {Dashboard,QrCode,MonetizationOn,Send,
   AccountBalanceWallet,Help
 } from '@mui/icons-material'
@@ -20,6 +20,7 @@ const {path}=useRouteMatch()
     <>
     <Box sx={{ width: '100%'}}>
 <div className={classes.Header}><span>BPS</span></div>
+
 <List>
   <ListComponent path={`${path}/`}
    Icon={<Dashboard sx={{ color:'white' }}/>}
@@ -55,7 +56,7 @@ const {path}=useRouteMatch()
           </List>
           
 
-<List style={{ marginTop:'180px' }}>
+<List style={{ marginTop:'150px' }}>
 <ListComponent path={`${path}/help`}
    Icon={<Help sx={{ color:'white' }}/>}
    event="help"
