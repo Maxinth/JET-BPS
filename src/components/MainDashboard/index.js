@@ -32,7 +32,7 @@ const [state, setState] = React.useState({});
 
   return(
     <>
-<Container fluid>
+<Container fluid className={classes.back}>
 <Row>
  <Col md={2} className={classes.Drawer}>
 <Drawer anchor="left" open={state['left']} onClose={toggleDrawer("left",false)}>
