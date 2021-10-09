@@ -8,7 +8,7 @@ import {Typography,Breadcrumbs,Link,FormControl,
   Stack,
   Select,
   MenuItem,}from '@mui/material';
-import CardComponent from '../CardComponent';
+import CardComponent from '../../../components/CardComponent';
 import classes from "./index.module.scss"
 
 const Funds=(props)=>{

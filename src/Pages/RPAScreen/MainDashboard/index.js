@@ -1,25 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import{Container,Row,Col} from 'react-bootstrap'
 import classes from "./index.module.css"
-import SidebarComponent from '../SidebarComponent';
+import SidebarComponent from '../../../components/SidebarComponent';
 import Dashboard from '../Dashboard'
-import Wallet from '../Pages/Wallet'
-import Voucher from '../Pages/Voucher'
-import Deposit from '../Pages/Deposit'
+import Wallet from '../Wallet'
+import Voucher from '../Voucher'
+import Deposit from '../Deposit'
 import {
   PersonSharp,
   MenuSharp
 } from '@mui/icons-material';
-import {useLocation,Route,Switch,useRouteMatch} from 'react-router-dom'
+import {Route,Switch,useRouteMatch} from 'react-router-dom'
 import { Drawer,Box} from '@mui/material';
-import ListSidebarComponent from '../ListSidebarComponent'
+import ListSidebarComponent from '../../../components/ListSidebarComponent'
 
 
 
 
 const MainDashboard=()=>{
 const {path}=useRouteMatch()
-const {pathname}=useLocation()
 const [state, setState] = React.useState({});
 
   const toggleDrawer = (anchor,open) => (event) => {

@@ -1,13 +1,13 @@
 import React from "react";
 import { Container,Row,} from "react-bootstrap";
 import {Switch ,Redirect, Route} from "react-router-dom"
-import PageNotFound from "./components/PageNotFound"
-import Login from "./components/AuthPage/Login"
-import ForgotPassword from "./components/AuthPage/ForgotPassword"
-import DashBoard from "./components/MainDashboard";
-import Funds from "./components/Funds";
-import PrintPage from "./components/PrintPage";
-import PrintPageSecond from "./components/PrintPageSecond";
+import PageNotFound from "./Pages/PageNotFound"
+import Login from "./auth/RPAScreen/Login"
+import ForgotPassword from "./auth/RPAScreen/ForgotPassword"
+import DashBoard from "./Pages/RPAScreen/MainDashboard";
+import Funds from "./Pages/RPAScreen/Funds";
+import PrintPage from "./Pages/RPAScreen/PrintPage";
+import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
 
 
 function App() {

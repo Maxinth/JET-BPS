@@ -1,5 +1,5 @@
 import React from "react";
-import DepositPage from "../../DepositPageComps";
+import DepositPage from "../DepositPageComps";
 
 const Deposit = () => {
   return <DepositPage />;

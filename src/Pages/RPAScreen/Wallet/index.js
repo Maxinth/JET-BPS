@@ -1,9 +1,9 @@
 import React from 'react'
-import{Container,Row,Col} from 'react-bootstrap'
+import{Row,Col} from 'react-bootstrap'
 import {Paper,Box,Button } from '@mui/material'
-import CardComponent from '../../CardComponent';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import { DatePicker,Input,Space} from 'antd';
+import CardComponent from '../../../components/CardComponent';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { DatePicker,Input} from 'antd';
 import {useHistory} from 'react-router-dom'
 
 
@@ -11,7 +11,7 @@ import {
   
   FindInPageSharp
 } from '@mui/icons-material';
-import TableComponent from '../../TableComponent';
+import TableComponent from '../../../components/TableComponent';
 //import classes from "./index.module.css"
 
 
@@ -68,8 +68,6 @@ const Wallet=()=>{
  const  history=useHistory()
 
  const { RangePicker } = DatePicker;
-const [value, setValue] = React.useState([null, null]);
-
 
 const NavBtn=()=>{
   history.push('/funds')

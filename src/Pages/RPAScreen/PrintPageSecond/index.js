@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './index.module.css'
 import {Container,Row,Col} from 'react-bootstrap'
 import QRCode from 'react-qr-code'
-import {Stack,Button} from '@mui/material'
+import {Button} from '@mui/material'
 
 const PrintPageSecond=()=>{
 
@@ -20,7 +20,7 @@ const PrintPageSecond=()=>{
 
   <h4>Basic Subsidy Scheme</h4>
   <h6>SeedCo Limited</h6>
-  <h7>Voucher Deposit Confirmation</h7>
+  <h7>Payment details</h7>
 </div>
 
 </Col>
