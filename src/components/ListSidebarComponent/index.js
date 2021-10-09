@@ -1,5 +1,5 @@
 import React from 'react'
-import {List,Box,Divider} from '@mui/material'
+import {List,Box} from '@mui/material'
 import {Dashboard,QrCode,MonetizationOn,Send,
   AccountBalanceWallet,Help
 } from '@mui/icons-material'

@@ -1,8 +1,5 @@
 import React from 'react'
-import {List,ListItem,ListItemButton,ListItemText,ListItemIcon,Box} from '@mui/material'
-import {Dashboard,QrCode,MonetizationOn,Send,
-  AccountBalanceWallet,Help
-} from '@mui/icons-material'
+import {ListItem,ListItemButton,ListItemText,ListItemIcon} from '@mui/material'
 import classes from "./index.module.css"
 import {Link,useRouteMatch,useLocation} from 'react-router-dom'
 

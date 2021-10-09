@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './index.module.css'
 import {Container,Row,Col} from 'react-bootstrap'
 import QRCode from 'react-qr-code'
-import {Stack,Button} from '@mui/material'
+import {Button} from '@mui/material'
 
 const PrintPage=()=>{
 

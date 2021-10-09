@@ -1,14 +1,13 @@
 import React from 'react'
 import{Row,Col} from 'react-bootstrap'
-//import classes from "./index.module.css"
-import { DatePicker,Input,Space} from 'antd';
-import CardComponent from '../CardComponent';
+import { DatePicker,Input} from 'antd';
+import CardComponent from '../../../components/CardComponent';
 import {Paper,Box} from "@mui/material"
 import {
   
   FindInPageSharp
 } from '@mui/icons-material';
-import TableComponent from '../TableComponent';
+import TableComponent from '../../../components/TableComponent';
 
 const heading=["Date","Refrence No","Beneficiary details Wallet",
   "Deposit Received","Subsidy Amount","Total value"]
@@ -59,7 +58,6 @@ const data=
 const DashBoard=()=>{
  
   const { RangePicker } = DatePicker;
-const [value, setValue] = React.useState([null, null]);
 
   return(
 <>
