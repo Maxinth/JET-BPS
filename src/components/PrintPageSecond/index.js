@@ -4,7 +4,7 @@ import {Container,Row,Col} from 'react-bootstrap'
 import QRCode from 'react-qr-code'
 import {Stack,Button} from '@mui/material'
 
-const PrintPage=()=>{
+const PrintPageSecond=()=>{
 
 
 
@@ -30,9 +30,8 @@ const PrintPage=()=>{
 
 <QRCode value={'hey'} size={100}/>
 {" "}
-<h6>Voucher Amount</h6>
-<h4>$23,000,000</h4>
-<h6>Approved Amount</h6>
+
+<h6>Good Value Released</h6>
 <h4>$10,000,000</h4>
 <p>proccessed by</p>
 <p> folayan@gmail.com</p>
@@ -47,14 +46,14 @@ const PrintPage=()=>{
         <td>1/3/2020</td>
       </tr>
       <tr>
-        <td>Application Reference</td>
+        <td> Reference Number</td>
         
         <td>13GHTNU3839390</td>
       </tr>
       <tr>
-        <td>Deposit Reference</td>
+        <td>Beneficiary Name</td>
         
-        <td>13GHTRD839390</td>
+        <td>formtable</td>
       </tr>
       <tr>
         <td>Beneficiary Wallet</td>
@@ -63,12 +62,12 @@ const PrintPage=()=>{
 
       </tr>
       <tr>
-        <td>Voucher Amount</td>
+        <td>Beneficiary Deposit</td>
         
         <td>$8900000</td>
       </tr>
       <tr>
-        <td>Good Value to Receive</td>
+        <td>Good Value to Released</td>
         
         <td>$7000000</td>
       </tr>
@@ -94,4 +93,4 @@ const PrintPage=()=>{
 </Container>
   )
 }
-export default PrintPage
+export default PrintPageSecond
