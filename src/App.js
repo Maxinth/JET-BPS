@@ -8,18 +8,20 @@ import DashBoard from "./Pages/RPAScreen/MainDashboard";
 import Funds from "./Pages/RPAScreen/Funds";
 import PrintPage from "./Pages/RPAScreen/PrintPage";
 import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
+import {generateNumber} from "./shared/utility"
 
 
 function App() {
+console.log(generateNumber(15))
   const routes=(
 <Switch>
 <Route exact  path={`/login`} component={Login}/>
 <Route exact path={`/forgot`} component={ForgotPassword}/>
 <Route path="/home"  component={DashBoard}/>
-<Route path="/funds"  component={Funds}/>
-<Route path="/print"  component={PrintPage}/>
-<Route path="/print2"  component={PrintPageSecond}/>
-<Route path="/"  >
+<Route exact path="/funds"  component={Funds}/>
+<Route exact path="/print"  component={PrintPage}/>
+<Route exact path="/print2"  component={PrintPageSecond}/>
+<Route exact path="/"  >
 <Redirect to={`/home`}/>
 </Route>
 <Route path="*">  

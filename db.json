@@ -1,13 +1,14 @@
 {
-  "users": [
+  "users/id": [
     {
       "id": "1",
       "name": "sola",
       "description": "customer account",
+      "email": "folayan@gmail.com",
+      "password":"merlin12",
       "active": true,
       "phone": "08124567893",
       "url": "https://www.facebook.com",
-      "email": "folayan@gmail.com",
       "address": "adekunle str",
       "city": "oyo",
       "postCode": "23474",
@@ -23,7 +24,6 @@
       "status": "approved",
       "countryId": 0,
       "language": "english"
-      
     }
   ],
 

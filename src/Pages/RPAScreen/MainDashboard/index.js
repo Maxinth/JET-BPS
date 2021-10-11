@@ -6,6 +6,7 @@ import Dashboard from '../Dashboard'
 import Wallet from '../Wallet'
 import Voucher from '../Voucher'
 import Deposit from '../Deposit'
+import PageNotFound from "../../PageNotFound"
 import {
   PersonSharp,
   MenuSharp
@@ -54,6 +55,9 @@ const [state, setState] = React.useState({});
 <Route exact path={`${path}/deposit`} component={Deposit} />
 <Route exact path={`${path}/wallet`} component={Wallet} />
 <Route exact path={`${path}/voucher`} component={Voucher} />
+<Route path={`${path}/*`}>  
+<PageNotFound/>
+</Route>
 </Switch>
   {/*  */}
   </Row>

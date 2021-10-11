@@ -55,11 +55,11 @@ const Funds=(props)=>{
 </Col>
 </Row>
 <Row style={{ marginTop:'40px' }}>
-<Col></Col>
-<Col>
+<Col md={4}></Col>
+<Col md={4}>
  <CardComponent Title={'Wallet Balance'} subTitle={"$800,0000"}/>
 </Col>
-<Col></Col>
+<Col md={4}></Col>
 </Row>
 
 <Row>
