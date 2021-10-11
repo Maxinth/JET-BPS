@@ -1,100 +1,195 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const InputBox = styled.input`
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  border: 1px solid #333;
-  transition: all 0.2s;
-
-  &:focus {
-    background-color: #f2f2f2;
-    border: 1px solid green;
-  }
-
-  ${({ fill }) =>
-    fill &&
-    css`
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-    `}
-
-  &:disabled {
-    background-color: grey;
-    color: #fff;
-  }
-`;
-
-const GreyBox = styled.div`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: grey;
-  border: 3px solid grey;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  width: 80%;
+  margin-top: 7rem;
+
+  & div.mainSearch {
+    margin-bottom: 2rem;
+  }
 `;
 
 const Label = styled.label`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  max-width: 900px;
+  align-self: flex-start;
+  max-width: 500px;
+  margin-bottom: 0.9rem;
   width: 100%;
-  margin-bottom: 0.5rem;
-  ${({ isBold }) =>
-    isBold &&
-    css`
-      & ${GreyBox} {
-        font-weight: bolder;
-        text-transform: uppercase;
-        /* color: #333; */
-        font-size: 1.4rem;
+  @media (min-width: 768px) {
+    max-width: 600px;
+
+    &:last-child {
+      max-width: unset;
+      justify-content: flex-start;
+      width: 100%;
+
+      & div:last-child {
+        align-self: center;
+        max-width: 400px;
+        /* margin-left: 9rem; */
       }
-    `}
+    }
+  }
 `;
 
 const Span = styled.span`
-  margin-right: 0.3rem;
-  font-weight: bold;
-  & + ${InputBox} {
-    width: 60%;
-    /* flex: 1; */
+  /* margin-right: 0.8rem;
+  font-weight: 500;
+  min-width: 150px;
+  color: grey;
+  & + * {
+    flex: 1;
+  } */
+  margin-right: 0.2rem;
+  color: red;
+`;
+
+const Box = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  border: 3px solid grey;
+  text-align: center;
+  color: grey;
+  font-weight: 500;
+  border-radius: 3px;
+  /* align-self: flex-end; */
+`;
+
+const LineBox = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  /* align-self: flex-start; */
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  & button {
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+
+    @media (min-width: 700px) {
+      align-self: center;
+      justify-content: flex-start;
+    }
   }
 
-  &.req {
-    color: red;
-    /* position:relative; */
-    margin-right: 0.1rem;
+  /* @media (min-width: 530px) {
+    justify-content: flex-start;
+  } */
+  @media (min-width: 700px) {
+    flex-direction: row;
+    & ${Label} + * {
+      margin-left: 0.8rem;
+    }
+
+    & ${Label} + ${Label} {
+      & p {
+        margin-left: 0.5rem;
+      }
+      & div {
+        margin-left: 1rem;
+      }
+    }
+    /* justify-content: flex-start;  */
   }
 `;
 
 const InnerBox = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  /* margin-bottom: 2rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  padding: 0.5rem;
+  transition: padding 0.2s;
+  @media (min-width: 500px) {
+    padding: 1rem 2rem;
+  }
 `;
 
-const Container = styled.section`
-  padding: 1rem 2rem;
-  width: 100%;
-  & > ${InputBox} {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
+const VoucherBox = styled.section`
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  & ${InnerBox} ${InnerBox} {
-    margin-top: 4rem;
+  flex-direction: column;
+  padding: 2rem 0.5rem;
+  box-shadow: 1px 2px 5px grey;
+  transition: padding 0.2s;
+  @media (min-width: 500px) {
+    padding: 4rem 2rem;
+  }
+  @media (min-width: 768px) {
+    /* max-width: 00px; */
+
+    & ${Label} p + div,
+    & ${Label} p + div > div {
+      width: 100%;
+      align-items: flex-start;
+      margin-left: unset;
+    }
   }
 `;
 
-export { InnerBox, Container, InputBox, Label, GreyBox, Span };
+const Text = styled.p`
+  margin-right: 0.8rem;
+  font-weight: 500;
+  min-width: 150px;
+  color: grey;
+  & + * {
+    flex: 1;
+  }
+
+  & + div.radioGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: unset;
+    flex-direction: row;
+    & ${Label} {
+      width: 100%;
+    }
+  }
+`;
+
+const InnerVoucherBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  > * {
+    align-self: center;
+  }
+
+  & button {
+    margin-top: 2rem;
+    align-self: center;
+  }
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+`;
+
+export {
+  InnerVoucherBox,
+  Text,
+  Form,
+  Label,
+  Span,
+  Box,
+  LineBox,
+  InnerBox,
+  VoucherBox,
+};
