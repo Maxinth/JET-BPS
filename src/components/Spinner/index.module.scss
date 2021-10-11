@@ -1,5 +1,29 @@
 .Spinner{
-  margin-left:45%;
-  margin-top:15% !important;
+  width:100%;
+  background: rgba(207, 111, 178, 0.2);
+  height:100vh;
+  z-index:1999;
+}
+.svg{
+  margin-left: 45%;
+  margin-top:15%;
+  margin-bottom:40px;
+
+}
+
+.Title{
+  margin-left: 43%;
+  font-style: italic;
+  color:#9c27b0;
+}
+
+@media screen and (max-width:750px){
+  .svg{
+    
+    margin-top:45% !important;
+    margin-bottom: -100px;
+    
+  }
   
+
 }
