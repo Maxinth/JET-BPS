@@ -1,14 +1,11 @@
 import React,{useState} from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import {Stack,IconButton} from '@mui/material';
-import FilledInput from '@mui/material/FilledInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+import {Stack,IconButton,Avatar,Button,Box,FilledInput,
+  InputLabel,InputAdornment,FormControl
+ } from '@mui/material';
+
+import {Visibility,VisibilityOff} from '@mui/icons-material';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import {Container,Row,Col} from 'react-bootstrap';
@@ -135,9 +132,11 @@ style={{ backgroundColor:"#9c27b0",height:'100vh' }}
             >
               Login
             </Button>
-            <Stack>
-            
-              <NavLink to={`/forgot`} style={{ marginLeft:'35%' }}>
+            <Stack direction="row" spacing={2}>
+            <NavLink to={`/forgot`} style={{ marginLeft:'5%' }}>
+                  Not Logged in? Signup
+                </NavLink>
+              <NavLink to={`/forgot`} style={{ marginLeft:'5%' }}>
                   Forgot password?
                 </NavLink>
               </Stack>

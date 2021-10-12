@@ -43,7 +43,7 @@ const [state, setState] = React.useState({});
       </Col>
       
   <SidebarComponent/>
-<Col md={10}>
+<Col md={10} style={{ backgroundColor:"#e8a8f3" }}>
   <Row>
 <Col md ={12} style={{padding:"15px",}}>
   <span className={classes.tog_icon} style={{float:'left',display:'none'}}>
