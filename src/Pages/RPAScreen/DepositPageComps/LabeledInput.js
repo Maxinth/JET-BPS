@@ -9,6 +9,8 @@ const LabeledInputAndDisplay = ({
   value = "",
   placeholder,
   handleChange,
+  size="small",
+  inputType="text"
 }) => {
   return (
     <Label>
@@ -19,8 +21,10 @@ const LabeledInputAndDisplay = ({
       {type === "input" && (
         <TextField
           variant="outlined"
+          size={size}
           value={value}
           placeholder={placeholder}
+          type={inputType}
           onChange={(e) => handleChange(e.target.value)}
         />
       )}
