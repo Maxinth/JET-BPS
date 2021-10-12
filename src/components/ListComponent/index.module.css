@@ -1,6 +1,9 @@
 .active{
-  background-color: rgb(58, 37, 75);
-  color:white;
+  background-color: #e8a8f3;
+  color:#9c27b0 !important;
+}
+.active svg{
+  color:#9c27b0 !important;
 }
 .icon{
   float:right;

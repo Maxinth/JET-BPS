@@ -5,10 +5,10 @@ import PageNotFound from "./Pages/PageNotFound"
 import Login from "./auth/RPAScreen/Login"
 import ForgotPassword from "./auth/RPAScreen/ForgotPassword"
 import DashBoard from "./Pages/RPAScreen/MainDashboard";
+import CusDashBoard from "./Pages/CustomerScreen/MainDashboard";
 import Funds from "./Pages/RPAScreen/Funds";
 import PrintPage from "./Pages/RPAScreen/PrintPage";
 import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
-import {generateNumber} from "./shared/utility"
 import CusLogin from "./auth/CustomerScreen/Login"
 import CusForgotPass from "./auth/CustomerScreen/ForgotPassword"
 
@@ -18,6 +18,7 @@ function App() {
 
   const routes=(
 <Switch>
+<Route path="/customer"  component={CusDashBoard}/>
 <Route exact  path={`/customer/forgot`} component={CusForgotPass}/>
 <Route exact  path={`/customer/login`} component={CusLogin}/>
 <Route exact  path={`/customer/signup`} component={Login}/>
