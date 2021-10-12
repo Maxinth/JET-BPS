@@ -3,7 +3,7 @@ import MainSearchInput from "./MainSearchInput";
 import {Container} from "@mui/material";
 import TopSection from "./TopSection";
 import VoucherDeposits from "./VoucherDeposits";
-import {data} from './data'
+// import {data} from './data'
 import { useState } from "react";
 
 const BeneficiaryDeposit = () => {
@@ -33,3 +33,4 @@ const BeneficiaryDeposit = () => {
 };
 
 export default BeneficiaryDeposit;
+
