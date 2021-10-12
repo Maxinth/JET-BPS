@@ -33,3 +33,4 @@ const BeneficiaryDeposit = () => {
 };
 
 export default BeneficiaryDeposit;
+
