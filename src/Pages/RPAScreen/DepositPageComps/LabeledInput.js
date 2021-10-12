@@ -39,5 +39,4 @@ LabeledInputAndDisplay.propTypes = {
   type: PropTypes.string,
   req: PropTypes.bool,
 };
-
 export default LabeledInputAndDisplay;
