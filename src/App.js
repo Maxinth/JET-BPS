@@ -9,12 +9,18 @@ import Funds from "./Pages/RPAScreen/Funds";
 import PrintPage from "./Pages/RPAScreen/PrintPage";
 import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
 import {generateNumber} from "./shared/utility"
+import CusLogin from "./auth/CustomerScreen/Login"
+import CusForgotPass from "./auth/CustomerScreen/ForgotPassword"
+
 
 
 function App() {
-console.log(generateNumber(15))
+
   const routes=(
 <Switch>
+<Route exact  path={`/customer/forgot`} component={CusForgotPass}/>
+<Route exact  path={`/customer/login`} component={CusLogin}/>
+<Route exact  path={`/customer/signup`} component={Login}/>
 <Route exact  path={`/login`} component={Login}/>
 <Route exact path={`/forgot`} component={ForgotPassword}/>
 <Route path="/home"  component={DashBoard}/>

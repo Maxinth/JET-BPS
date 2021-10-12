@@ -13,6 +13,8 @@ code {
     monospace;
 }
 
-input{
-  outline:none !important;
+
+
+.css-1vhaqj4-MuiButtonBase-root-MuiButton-root{
+  background-color:#9c27b0;
 }

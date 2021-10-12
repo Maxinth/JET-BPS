@@ -3,7 +3,7 @@
 }
 
 .appDraw{
-  background-color: rgb(32, 24, 43);
+  background-color: #9c27b0;
   height:fit-content;
   padding:0% !important;
   color:white ;
@@ -28,7 +28,7 @@ cursor:pointer;
     display:initial;
   }
   .appDraw{
-    background-color: rgb(32, 24, 43) !important;
+    background-color: #9c27b0 !important;
     height:fit-content;
     padding:0% !important;
     color:white;
