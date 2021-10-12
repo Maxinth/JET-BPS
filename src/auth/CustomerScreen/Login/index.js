@@ -1,20 +1,23 @@
 import React,{useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-
 import Box from '@mui/material/Box';
+import {Stack,IconButton} from '@mui/material';
+import FilledInput from '@mui/material/FilledInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Container,Row,Col} from 'react-bootstrap';
 import {NavLink,useHistory} from 'react-router-dom'
 import Spinner from '../../../components/Spinner'
 import {useDispatch,useSelector, shallowEqual} from "react-redux"
 import {signin} from '../../../slices/auth'
 
-const theme = createTheme();
+
 
 export default function Login(){
 
@@ -23,6 +26,11 @@ const {token} = useSelector((state) => state.auth, shallowEqual)
 const islogged = token?true:false
   const dispatch =useDispatch()
   const history=useHistory()
+  const [values, setValues] = useState({
+   
+    password: '',
+        showPassword: false,
+  });
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -40,72 +48,107 @@ setLoading(false)
   })
   };
 
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
-    <ThemeProvider theme={theme}>
+<>
       {loading?
   <Spinner title={'Wait a moment'}/>:(
-      <Container component="main" maxWidth="xs" 
-
-      >
-        <CssBaseline />
+      <Container 
+style={{ backgroundColor:"#9c27b0",height:'100vh' }}
+>
+    <Row>
+      <Col md={4}></Col>
+      <Col md={4}>
         <Box
           sx={{
-            marginTop: 8,
-            display: 'flex',
+            marginTop:'30%',
             flexDirection: 'column',
+            bgcolor:'#e8a8f3',
+            color:' #9c27b0',
             alignItems: 'center',
             boxShadow:'2px 0px 10px rgb(0,0,0,0.4)',
-            padding:'35px'
+            padding:'35px',
+            display: 'flex', flexWrap: 'wrap',
+            borderRadius:'20px'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h2" variant="h5" color=' #9c27b0'>
             Log-in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate  sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              
-             
-              
-            />
-            <TextField
-              margin="normal"
-              id="password"
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              
-              
+          <Box component="form" onSubmit={handleSubmit} autoComplete="off" noValidate sx={{ mt:5 }}>
+          <FormControl sx={{ mt:2, width: '100%' }}>
+          <InputLabel htmlFor="outlined-adornment-email" sx={{ color:' #9c27b0', }}>Username</InputLabel>
+          <FilledInput
+          
+          required
+            id="outlined-adornment-email"
+            type='text'
+            onChange={handleChange}
+            label="Username"
+          />
 
-            />
+
+            </FormControl>
+            <FormControl sx={{mt:3, width: '100%' }} >
+          <InputLabel htmlFor="outlined-adornment-password" sx={{ color:' #9c27b0', }}>Password</InputLabel>
+          <FilledInput
+            
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            variant="outlined"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="show password"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
              <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, bgcolor:'#9c27b0' }}
             >
               Login
             </Button>
-            
+            <Stack>
             
               <NavLink to={`/forgot`} style={{ marginLeft:'35%' }}>
                   Forgot password?
                 </NavLink>
-              
+              </Stack>
           </Box>
         </Box>
-       
+        </Col>
+        <Col md={4}></Col>
+        </Row>
       </Container>
   )}
-    </ThemeProvider>
-
+   
+</>
   );
 }
