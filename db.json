@@ -1,0 +1,69 @@
+{
+  
+"wallet":[
+  {
+    "id": 1,
+  "number": "5083943285",
+  "type": "saving",
+  "active": true,
+  "createdDate": "4/9/2020",
+  "amt": 495050,
+  "balance": 300000,
+  "currency": "USD",
+  "fees": 50,
+  "pin": "1993",
+  "status": "pending",
+  "userId":1
+  }
+],
+
+"voucher":[
+
+  {
+
+  }
+],
+  "deposit": [
+    { "id": 1, 
+      "name": "Form2Table", 
+      "ref_no": "FKE20200112312",
+      "deposit_received":"15000",
+      "date":"2/3/2020",
+      "wallet":"2569786427345",
+      "total_val":"78000"
+      
+
+    },
+    { "id": 2, 
+      "name": "Form3Table", 
+      "ref_no": "FKE20200112312",
+      "deposit_received":"10000",
+      "date":"2/5/2020",
+      "wallet":"2568786027345",
+      "total_val":"98000"
+      
+
+    },
+    { "id": 3, 
+      "name": "Form4Table", 
+      "ref_no": "FTE20200119312",
+      "deposit_received":"5000",
+      "date":"2/6/2020",
+      "wallet":"2569786427345",
+      "total_val":"58000"
+      
+
+    },
+    { "id": 4, 
+      "name": "Form1Table", 
+      "ref_no": "FTD20200112312",
+      "deposit_received":"18000",
+      "date":"9/3/2020",
+      "wallet":"2769786425345",
+      "total_val":"100000"
+      
+
+    }
+  ]
+
+}
