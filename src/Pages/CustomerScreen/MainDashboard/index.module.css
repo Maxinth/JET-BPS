@@ -1,38 +1,34 @@
-.Drawer{
-  display:none;
+.Drawer {
+  display: none;
 }
 
-.appDraw{
+.appDraw {
   background-color: #9c27b0;
-  height:100vh;
-  padding:0% !important;
-  color:white ;
-  
+  height: 100vh;
+  padding: 0% !important;
+  color: white;
 }
 
-.appDraw ul li a{
-  text-decoration:none;
-  color:white !important;
-  width:100% !important;
+.appDraw ul li a {
+  text-decoration: none;
+  color: white !important;
+  width: 100% !important;
 }
-.appDraw ul li:hover{
-cursor:pointer;
+.appDraw ul li:hover {
+  cursor: pointer;
 }
-
 
 @media screen and (max-width: 763px) {
-  .tog_icon{
-    display:inline-block !important;
+  .tog_icon {
+    display: inline-block !important;
   }
-  .Drawer{
-    display:initial;
+  .Drawer {
+    display: initial;
   }
-  .appDraw{
+  .appDraw {
     background-color: #9c27b0 !important;
-    height:fit-content;
-    padding:0% !important;
-    color:white;
-    
+    height: 100%;
+    padding: 0% !important;
+    color: white;
   }
-
 }

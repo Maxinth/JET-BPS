@@ -11,20 +11,20 @@ import PrintPage from "./Pages/RPAScreen/PrintPage";
 import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
 import CusLogin from "./auth/CustomerScreen/Login";
 import CusForgotPass from "./auth/CustomerScreen/ForgotPassword";
-// import { generateNumber } from "./shared/utility";
-import CustomerSignUp from "./auth/CustomerScreen/SignUp";
+import SignUp from "./auth/CustomerScreen/SignUp";
+import ProtectedRoute from "./shared/ProtectedRoute";
 
 function App() {
   const routes = (
     <Switch>
-      <Route path="/cs/signup" component={CustomerSignUp} />
-      <Route exact path="/customer" component={CusDashBoard} />
+      <Route path="/cs/signup" component={SignUp} />
+      <ProtectedRoute exact path="/customer" component={CusDashBoard} />
       <Route exact path={`/customer/forgot`} component={CusForgotPass} />
       <Route exact path={`/customer/login`} component={CusLogin} />
       <Route exact path={`/customer/signup`} component={Login} />
       <Route exact path={`/login`} component={Login} />
       <Route exact path={`/forgot`} component={ForgotPassword} />
-      <Route path="/home" component={DashBoard} />
+      <ProtectedRoute path="/home" component={DashBoard} />
       <Route exact path="/funds" component={Funds} />
       <Route exact path="/print" component={PrintPage} />
       <Route exact path="/print2" component={PrintPageSecond} />

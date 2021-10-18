@@ -10,46 +10,49 @@ import {
   InputLabel,
   InputAdornment,
   FormControl,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Visibility, VisibilityOff, LockOutlined } from "@mui/icons-material";
 
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { Container, Row, Col } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { useDispatch } from "react-redux";
 import { signin } from "../../../slices/auth";
+//import bcrypt from "bcryptjs";
 
-export default function Login() {
+//const salt = bcrypt.genSaltSync(10);
+
+const CusLogin = () => {
   const [loading, setLoading] = useState(false);
-  // const {token} = useSelector((state) => state.auth, shallowEqual)
-  // const islogged = token?true:false
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const [values, setValues] = useState({
-    email: " ",
+    email: "",
     password: "",
     showPassword: false,
   });
+  //const password = bcrypt.hashSync(values.password, salt);
   const handleSubmit = (event) => {
     event.preventDefault();
     const user = {
       email: values.email,
       password: values.password,
     };
-
     setLoading(true);
-
     dispatch(signin(user))
       .unwrap()
       .then(() => {
-        history.push("/home");
+        history.push("/customer");
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
+        setOpen(true);
       });
   };
 
@@ -65,8 +68,28 @@ export default function Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
   return (
     <>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert
+          onClose={handleClose}
+          severity="error"
+          sx={{ width: "fit-content" }}
+        >
+          Invalid Input entered
+        </Alert>
+      </Snackbar>
       {loading ? (
         <Spinner title={"Wait a moment"} />
       ) : (
@@ -89,7 +112,7 @@ export default function Login() {
                 }}
               >
                 <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                  <LockOutlinedIcon />
+                  <LockOutlined />
                 </Avatar>
                 <Typography component="h2" variant="h5" color=" #9c27b0">
                   Log-in
@@ -110,7 +133,6 @@ export default function Login() {
                     </InputLabel>
                     <FilledInput
                       name="email"
-                      required
                       id="outlined-adornment-email"
                       type="text"
                       onChange={handleChange("email")}
@@ -131,7 +153,6 @@ export default function Login() {
                       type={values.showPassword ? "text" : "password"}
                       value={values.password}
                       onChange={handleChange("password")}
-                      variant="outlined"
                       endAdornment={
                         <InputAdornment position="end">
                           <IconButton
@@ -183,4 +204,5 @@ export default function Login() {
       )}
     </>
   );
-}
+};
+export default CusLogin;

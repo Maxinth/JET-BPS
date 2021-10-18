@@ -1,96 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import CardComponent from "../../../components/CardComponent";
 import { Paper, Box } from "@mui/material";
-// import {
-
-//   FindInPageSharp
-// } from '@mui/icons-material';
+import axios from "axios";
 import TableComponent from "../../../components/TableComponent";
+import CardSection from "../CardSection";
+import { useSelector, shallowEqual } from "react-redux";
+import { authHeader } from "../../../services/auth_service";
 
 const heading = [
-  "Date",
-  "Refrence No",
-  "Beneficiary details Wallet",
-  "Deposit Received",
-  "Subsidy Amount",
-  "Total value",
+  { Header: "Date Applied", accessor: "createdDate" },
+  { Header: "Refrence No", accessor: "reference" },
+  { Header: "Subsidy Type", accessor: "description" },
+  { Header: "Paying Agency", accessor: "type" },
+  { Header: "Amount", accessor: "amt" },
+  { Header: "Status", accessor: "status" },
 ];
-
-const data = [
-  {
-    id: 1,
-    name: "Form2Table",
-    ref_no: "FKE20200112312",
-    deposit_received: "15000",
-    date: "2/3/2020",
-    wallet: "2569786427345",
-    total_val: "78000",
-  },
-  {
-    id: 2,
-    name: "Form3Table",
-    ref_no: "FKE20200112312",
-    deposit_received: "10000",
-    date: "2/5/2020",
-    wallet: "2568786027345",
-    total_val: "98000",
-  },
-  {
-    id: 3,
-    name: "Form4Table",
-    ref_no: "FTE20200119312",
-    deposit_received: "5000",
-    date: "2/6/2020",
-    wallet: "2569786427345",
-    total_val: "58000",
-  },
-  {
-    id: 4,
-    name: "Form1Table",
-    ref_no: "FTD20200112312",
-    deposit_received: "18000",
-    date: "9/3/2020",
-    wallet: "2769786425345",
-    total_val: "100000",
-  },
-];
+const API_URL = "http://localhost:3001";
 
 const DashBoard = () => {
+  const { user } = useSelector((state) => state.auth, shallowEqual);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios
+      .get(API_URL + "/transactions?userId=" + user.id, {
+        headers: authHeader(),
+      })
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      });
+  }, [user.id]);
+
+  console.log(data);
   return (
     <>
-      <Row style={{ padding: "20px" }}>
-        <Col md={4}>
-          <CardComponent Title={"Wallet Balance"} subTitle={"$800,0000"} />
-        </Col>
-        <Col md={4}>
-          <CardComponent
-            Title={"Total Funds Received"}
-            subTitle={"$800,0000"}
-          />
-        </Col>
-        <Col md={4}>
-          <CardComponent Title={"Total Disbursement"} subTitle={"$800,0000"} />
-        </Col>
-      </Row>
+      <CardSection />
 
       <Row>
-        <Col md={6} style={{ padding: "20px" }}>
-          {/* <RangePicker size="large" style={{width:'100%'}}/> */}
-        </Col>
-        <Col md={5} style={{ padding: "20px" }}>
-          {/* <Input size="large" style={{ borderRadius:'50px',width:'100%' }} 
-placeholder="search any column" 
-prefix={<FindInPageSharp />}
-/> */}
-        </Col>
+        <Col md={6} style={{ padding: "20px" }}></Col>
+        <Col md={5} style={{ padding: "20px" }}></Col>
         <Col md={1}></Col>
       </Row>
       <Row>
         <Col md={12}>
           <Box sx={{ padding: "10px" }}>
             <Paper elevation={3}>
-              <TableComponent data={data} heading={heading} />
+              <TableComponent loading={loading} data={data} heading={heading} />
             </Paper>
           </Box>
         </Col>
