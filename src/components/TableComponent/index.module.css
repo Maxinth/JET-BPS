@@ -9,14 +9,14 @@
 }
 .tb {
   font-size: 8pt;
-  padding: 0px !important;
+  padding: 3px !important;
 }
 
 .table {
   height: auto;
 }
 .tableCard {
-  height: 400px;
+  height: 500px;
   position: relative;
 }
 .tableFooter {
@@ -54,7 +54,7 @@
     overflow: scroll;
   }
   .tableCard {
-    height: 630px;
+    height: 700px;
     position: relative;
   }
   .tableFooter {
