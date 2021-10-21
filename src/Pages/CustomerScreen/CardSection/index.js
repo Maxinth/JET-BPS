@@ -19,7 +19,15 @@ const CardSection = () => {
       })
       .then((res) => {
         setData(res.data);
-        setIsloading(false);
+        setIsloading(false)
+      });
+      axios
+      .get(API_URL + "/vouchers?userId=" + user.id, {
+        headers: authHeader(),
+      })
+      .then((res) => {
+        setData(res.data);
+        setIsloading(false)
       });
   }, [user.id]);
 

@@ -7,26 +7,27 @@ import ForgotPassword from "./auth/RPAScreen/ForgotPassword";
 import DashBoard from "./Pages/RPAScreen/MainDashboard";
 import CusDashBoard from "./Pages/CustomerScreen/MainDashboard";
 import Funds from "./Pages/RPAScreen/Funds";
-import PrintPage from "./Pages/RPAScreen/PrintPage";
+import PrintPage from "./Pages/CustomerScreen/PrintPage";
 import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
 import CusLogin from "./auth/CustomerScreen/Login";
 import CusForgotPass from "./auth/CustomerScreen/ForgotPassword";
 import SignUp from "./auth/CustomerScreen/SignUp";
 import ProtectedRoute from "./shared/ProtectedRoute";
+import PrivateRoute from "./shared/PrivateRoute";
 
 function App() {
   const routes = (
     <Switch>
       <Route path="/cs/signup" component={SignUp} />
       <ProtectedRoute exact path="/customer" component={CusDashBoard} />
-      <Route exact path={`/customer/forgot`} component={CusForgotPass} />
-      <Route exact path={`/customer/login`} component={CusLogin} />
+      <PrivateRoute exact path={`/customer/forgot`} component={CusForgotPass} />
+      <PrivateRoute exact path={`/customer/login`} component={CusLogin} />
       <Route exact path={`/customer/signup`} component={Login} />
-      <Route exact path={`/login`} component={Login} />
-      <Route exact path={`/forgot`} component={ForgotPassword} />
+      <PrivateRoute exact path={`/login`} component={Login} />
+      <PrivateRoute exact path={`/forgot`} component={ForgotPassword} />
       <ProtectedRoute path="/home" component={DashBoard} />
       <Route exact path="/funds" component={Funds} />
-      <Route exact path="/print" component={PrintPage} />
+      <ProtectedRoute exact path="/trans/:id" component={PrintPage} />
       <Route exact path="/print2" component={PrintPageSecond} />
       <Route exact path="/">
         <Redirect to={`/home`} />

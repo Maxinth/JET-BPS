@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { login, logout } from "../services/auth_service";
 
+
 const token = JSON.parse(sessionStorage.getItem("xys"));
 const user = JSON.parse(sessionStorage.getItem("xs"));
 
@@ -17,7 +18,7 @@ export const signin = createAsyncThunk(
 );
 
 export const signout = createAsyncThunk("auth/logout", async () => {
-  await logout();
+  await logout()
 });
 
 const initialState = token

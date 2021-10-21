@@ -16,3 +16,7 @@ code {
 input {
   outline: none !important;
 }
+
+a{
+  text-decoration:none !important;
+}

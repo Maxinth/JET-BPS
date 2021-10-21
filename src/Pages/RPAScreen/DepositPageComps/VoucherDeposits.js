@@ -1,3 +1,4 @@
+import React from "react";
 import { VoucherBox, InnerVoucherBox } from "./styled";
 import CashDepositScreen from "./CashDepositScreen";
 import { Button } from "@mui/material";
