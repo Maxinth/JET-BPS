@@ -1,17 +1,31 @@
-import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
-import LabeledInput from "../../../Pages/RPAScreen/DepositPageComps/LabeledInput";
+import LabeledInput from "./LabeledInput";
 import { LabelBox } from "./styled";
-import MobileLabelInput from "./MobileLabelInput";
+import LabeledSelect from "./LabeledSelect";
+import React from "react";
+import {
+  useFormik,
+  Form,
+  // Formik, Form
+} from "formik";
+import { DisplayingErrorMessagesSchema, initialValues } from "./validations";
 const theme = createTheme();
 
-const SignUp = () => {
-  const [name, setName] = useState("");
+export default function SignUp() {
+  // const onSubmit = (val) => console.log(val);
+  // const onReset = () => console.log("reset");
+  const formik = useFormik({
+    initialValues,
+    // onSubmit,
+    // onReset,
+    // DisplayingErrorMessagesSchema
+  });
+
+  console.log("values = ", formik.values);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main">
@@ -27,92 +41,115 @@ const SignUp = () => {
             margin: "5rem auto",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h3" sx={{ marginBottom: 6 }}>
             Sign up
           </Typography>
-          <Box
-            component="form"
-            // onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1, width: "100%" }}
-          >
-            <LabelBox>
-              <LabeledInput
-                handleChange={setName}
-                type="input"
-                req={true}
-                value={name}
-                placeholder="FirstName Surname"
-                labelName="Names"
-                inputType="text"
-              />
-            </LabelBox>
-            <LabelBox>
-              <MobileLabelInput
-                labelName="Mobile number"
-                placeholder="select country"
-              />
-            </LabelBox>
-            <LabelBox>
-              <LabeledInput
-                handleChange={setName}
-                type="input"
-                req={true}
-                value={name}
-                placeholder="FirstName Surname"
-                labelName="Names"
-                inputType="text"
-              />
-            </LabelBox>
-            <LabelBox>
-              <LabeledInput
-                handleChange={setName}
-                type="input"
-                req={true}
-                value={name}
-                placeholder="Email"
-                labelName="Email Addresss"
-                inputType="email"
-              />
-            </LabelBox>
-            <LabelBox>
-              <LabeledInput
-                handleChange={setName}
-                type="input"
-                req={true}
-                value={name}
-                placeholder=""
-                labelName="Password"
-              />
-            </LabelBox>
-            <LabelBox>
-              <LabeledInput
-                handleChange={setName}
-                type="input"
-                req={true}
-                value={name}
-                placeholder="FirstName Surname"
-                labelName="Retype password"
-              />
-            </LabelBox>
+          {/* <Formik */}
+          {/* initialValues={initialValues}
+            validationSchema={DisplayingErrorMessagesSchema}
+            onSubmit={(values) => {
+              // same shape as initial value
+              console.log(values);
+            }} */}
+          <Form onSubmit={formik.handleSubmit}>
+            {/* {(errors, touched) => ( */}
+            <>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="firstName"
+                  placeholder="first name"
+                  labelName="First Name"
+                  inputType="text"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.firstName}
+                  // {...formik.getFieldProps("firstName")}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="surName"
+                  placeholder="surname"
+                  labelName="Surname"
+                  inputType="text"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.surName}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledSelect
+                  labelName="Select Country"
+                  id="country"
+                  req={true}
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.country}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="mobileNumber"
+                  placeholder="mobile number"
+                  labelName="Mobile Number"
+                  inputType="text"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.mobileNumber}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="email"
+                  placeholder="Email"
+                  labelName="Email Addresss"
+                  inputType="email"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.email}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="password"
+                  placeholder="Password"
+                  labelName="Password"
+                  inputType="password"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.password}
+                />
+              </LabelBox>
+              <LabelBox>
+                <LabeledInput
+                  type="input"
+                  req={true}
+                  id="retypePassword"
+                  placeholder="Retype password"
+                  labelName="Retype password"
+                  inputType="password"
+                  // handleChange={formik.handleChange}
+                  // value={formik.values.retypePassword}
+                />
+              </LabelBox>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Login
-            </Button>
-
-            <NavLink to={`/forgot`} style={{ marginLeft: "35%" }}>
-              Sign up
-            </NavLink>
-          </Box>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign up
+              </Button>
+            </>
+            {/* )} */}
+          </Form>
         </Box>
       </Container>
     </ThemeProvider>
   );
-};
-
-export default SignUp;
+}
