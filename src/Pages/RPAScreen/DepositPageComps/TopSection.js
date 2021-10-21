@@ -4,6 +4,7 @@ import ReferenceNoSearch from "./ReferenceNoSearch";
 import BeneficiaryNameAndNo from "./BeneficiaryNameAndNo";
 import ApplicationStatus from "./ApplicationStatus";
 import PropTypes from "prop-types";
+import React from "react";
 
 const TopSection = (props) => {
   const { refNo, getVal, handleSearch, ...detailsProps } = props;

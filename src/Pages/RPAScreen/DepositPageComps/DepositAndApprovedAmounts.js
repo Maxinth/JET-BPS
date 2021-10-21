@@ -1,6 +1,7 @@
 import { LineBox } from "./styled";
 import LabeledInputAndDisplay from "./LabeledInput";
 import PropTypes from "prop-types";
+import React from 'react'
 
 const DepositAndApprovedAmounts = ({ deposit = 0, approvedAmount = 0 }) => {
   return (

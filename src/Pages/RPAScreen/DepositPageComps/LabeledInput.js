@@ -1,7 +1,7 @@
 import {TextField} from "@mui/material";
 import { Span, Text, Label, Box } from "./styled";
 import PropTypes from "prop-types";
-
+import React from 'react'
 const LabeledInputAndDisplay = ({
   req = false,
   type,

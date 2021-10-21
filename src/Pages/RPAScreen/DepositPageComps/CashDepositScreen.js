@@ -1,6 +1,6 @@
 import LabeledInputAndDisplay from "./LabeledInput";
 import CashVoucherSelect from "./CashVoucherSelect";
-
+import React from 'react'
 const CashDepositScreen = (props) => {
   return (
     <>

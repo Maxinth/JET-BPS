@@ -4,7 +4,7 @@ import {Container} from "@mui/material";
 import TopSection from "./TopSection";
 import VoucherDeposits from "./VoucherDeposits";
 // import {data} from './data'
-import { useState } from "react";
+import React,{ useState } from "react";
 
 const BeneficiaryDeposit = () => {
   

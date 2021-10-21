@@ -1,5 +1,5 @@
 import LabeledInputAndDisplay from "./LabeledInput";
-
+import React from "react";
 const VoucherDepositScreen = ({ deposit = 0 }) => {
   return (
     <>
