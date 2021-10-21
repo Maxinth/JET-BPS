@@ -96,8 +96,80 @@
       "fees": 50,
       "pin": "1993",
       "walletId": 1,
+      "status": "approved",
+      "userId": 1
+    },
+    {
+      "id": 1,
+      "number": "5083943285",
+      "type": "saving",
+      "active": true,
+      "createdDate": "4/9/2020",
+      "amt": 495050,
+      "balance": 300000,
+      "currency": "USD",
+      "fees": 50,
+      "pin": "1993",
+      "walletId": 1,
+      "status": "approved",
+      "userId": 1
+    },
+    {
+      "id": 1,
+      "number": "5083943285",
+      "type": "saving",
+      "active": true,
+      "createdDate": "4/9/2020",
+      "amt": 495050,
+      "balance": 300000,
+      "currency": "USD",
+      "fees": 50,
+      "pin": "1993",
+      "walletId": 1,
       "status": "approved"
-    }
+    },
+    {
+      "id": 1,
+      "number": "5083943285",
+      "type": "saving",
+      "active": true,
+      "createdDate": "4/9/2020",
+      "amt": 495050,
+      "balance": 300000,
+      "currency": "USD",
+      "fees": 50,
+      "pin": "1993",
+      "walletId": 1,
+      "status": "approved"
+    },
+    {
+      "id": 1,
+      "number": "5083943285",
+      "type": "saving",
+      "active": true,
+      "createdDate": "4/9/2020",
+      "amt": 495050,
+      "balance": 300000,
+      "currency": "USD",
+      "fees": 50,
+      "pin": "1993",
+      "walletId": 1,
+      "status": "approved"
+    },{
+      "id": 1,
+      "number": "5083943285",
+      "type": "saving",
+      "active": true,
+      "createdDate": "4/9/2020",
+      "amt": 495050,
+      "balance": 300000,
+      "currency": "USD",
+      "fees": 50,
+      "pin": "1993",
+      "walletId": 1,
+      "status": "pending"
+    },
+
   ],
 
   "deposits": [

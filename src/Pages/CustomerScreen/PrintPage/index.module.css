@@ -1,0 +1,47 @@
+.Section {
+  height: fit-content;
+  padding: 20px;
+  margin-top: 30px !important;
+  box-shadow: 1px 4px 15px rgb(186, 194, 204);
+  background-color: white !important;
+}
+
+.table tr td {
+  padding: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.table2{
+  margin-top:50%;
+}
+.table2 tr td {
+  padding: 15px;
+  font-weight: 500;
+  text-align: left;
+  
+}
+@media print {
+        button{
+          display:none !important;
+        }
+
+        .table tr td {
+          padding: 15px;
+          font-weight: 500;
+          text-align: left;
+        }
+        .table2{
+          padding: 15px;
+          font-weight: 500;
+          text-align: left;
+          margin-top:0%;
+        }
+        .Section {
+          height: fit-content;
+          padding: 20px;
+          margin-top: 30px !important;
+          box-shadow: none;
+          background-color: white !important;
+        }
+      }

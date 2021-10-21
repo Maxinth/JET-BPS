@@ -1,3 +1,4 @@
+import React from "react";
 import DepositAndApprovedAmounts from "./DepositAndApprovedAmounts";
 import { InnerBox } from "./styled";
 import ReferenceNoSearch from "./ReferenceNoSearch";

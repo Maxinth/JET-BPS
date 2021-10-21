@@ -188,10 +188,10 @@ const CusLogin = () => {
                     Login
                   </Button>
                   <Stack direction="row" spacing={2}>
-                    <NavLink to={`/forgot`} style={{ marginLeft: "5%" }}>
+                    <NavLink to={`/cs/signup`} style={{ marginLeft: "5%" }}>
                       Not Logged in? Signup
                     </NavLink>
-                    <NavLink to={`/forgot`} style={{ marginLeft: "5%" }}>
+                    <NavLink to={`/customer/forgot`} style={{ marginLeft: "5%" }}>
                       Forgot password?
                     </NavLink>
                   </Stack>
