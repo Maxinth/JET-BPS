@@ -70,7 +70,7 @@ const MainDashboard = () => {
           <SidebarComponent />
           <Col md={10} style={{ backgroundColor: "white" }}>
             <Row>
-              <Col md={12} style={{ padding: "15px" }}>
+              <Col md={12} className={classes.head}>
                 <div>
                   {" "}
                   <span
