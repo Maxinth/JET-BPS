@@ -17,8 +17,8 @@ import {
 } from "@mui/icons-material";
 import classes from "./index.module.css";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import ListComponent from "../ListComponent";
-import { signout } from "../../slices/auth";
+import ListComponent from "../../../components/ListComponent";
+import { signout } from "../../../slices/auth";
 import { useDispatch } from "react-redux";
 
 const ListSidebarComponent = () => {
@@ -27,18 +27,16 @@ const ListSidebarComponent = () => {
   let history = useHistory();
 
   const logOut = () => {
-    dispatch(signout()).unwrap().then(()=>{
+    dispatch(signout())
+      .unwrap()
+      .then(() => {
         history.push("/customer/login");
-    }
-      )
-      history.push("/customer/login");
+      });
+    history.push("/customer/login");
   };
   return (
     <>
-      <Box sx={{ width: "100%",
-      height:"100vh",
-      position:'relative'
-       }}>
+      <Box sx={{ width: "100%", height: "100vh", position: "relative" }}>
         <div className={classes.Header}>
           <span>BPS</span>
         </div>
@@ -79,9 +77,10 @@ const ListSidebarComponent = () => {
             title="About"
           />
         </List>
-         
-      <List sx={{
-        width:'100%',
+
+        <List
+          sx={{
+            width: "100%",
             position: "absolute",
             bottom: "0px",
             backgroundColor: "white",
@@ -90,8 +89,9 @@ const ListSidebarComponent = () => {
               cursor: "pointer",
             },
           }}
-          onClick={logOut}>
-          <ListItem disablePadding  >
+          onClick={logOut}
+        >
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <Logout
