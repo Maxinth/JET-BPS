@@ -17,7 +17,6 @@ import DateRangePicker from "@mui/lab/DateRangePicker";
 
 const TableComponent = (props) => {
   const [value, setValue] = useState([null, null]);
-
   const data = useMemo(() => props.data, [props.data]);
   const columns = useMemo(() => props.heading, [props.heading]);
 
@@ -48,40 +47,48 @@ const TableComponent = (props) => {
   return (
     <>
       <Row>
-        <Col md={6}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateRangePicker
-              calendars={1}
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
-              renderInput={(startProps, endProps) => (
-                <React.Fragment>
-                  <TextField {...startProps} variant="standard" fullWidth />
-                  <Box sx={{ mx: 2 }}> to </Box>
-                  <TextField {...endProps} variant="standard" fullWidth />
-                </React.Fragment>
-              )}
-            />
-          </LocalizationProvider>
+        <Col md={6} style={{ padding: "20px" }}>
+          {props.loading ? (
+            <Skeleton variant="text" />
+          ) : (
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DateRangePicker
+                calendars={1}
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(startProps, endProps) => (
+                  <React.Fragment>
+                    <TextField {...startProps} variant="standard" fullWidth />
+                    <Box sx={{ mx: 2 }}> to </Box>
+                    <TextField {...endProps} variant="standard" fullWidth />
+                  </React.Fragment>
+                )}
+              />
+            </LocalizationProvider>
+          )}
         </Col>
-        <Col md={6}>
-          <TextField
-            fullWidth
-            id="input-with-icon-textfield"
-            label="Search any Column"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-            variant="standard"
-            value={globalFilter || ""}
-            onChange={(e) => setGlobalFilter(e.target.value)}
-          />
+        <Col md={6} style={{ padding: "20px" }}>
+          {props.loading ? (
+            <Skeleton variant="text" />
+          ) : (
+            <TextField
+              fullWidth
+              id="input-with-icon-textfield"
+              label="Search any Column"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+              variant="standard"
+              value={globalFilter || ""}
+              onChange={(e) => setGlobalFilter(e.target.value)}
+            />
+          )}
         </Col>
         <Col md={12}>
           <Box sx={{ padding: "10px" }}>

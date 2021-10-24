@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import classes from "./index.module.css";
-import SidebarComponent from "../../../components/SidebarComponent";
+import SidebarComponent from "../SidebarComponent";
 import Dashboard from "../Dashboard";
 import PageNotFound from "../../PageNotFound";
 import { PersonSharp, MenuSharp } from "@mui/icons-material";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { Drawer, Box, Snackbar, Alert } from "@mui/material";
-import ListSidebarComponent from "../../../components/ListSidebarComponent";
+import ListSidebarComponent from "../ListSidebarComponent";
 import { useSelector, shallowEqual } from "react-redux";
+import Subsidy from "../Subsidy";
 
 const MainDashboard = () => {
   const { user } = useSelector((state) => state.auth, shallowEqual);
@@ -95,11 +96,11 @@ const MainDashboard = () => {
               </Col>
               <Switch>
                 <Route exact path={`${path}/`} component={Dashboard} />
+                <Route exact path={`${path}/subsidy`} component={Subsidy} />
                 <Route path={`${path}/*`}>
                   <PageNotFound />
                 </Route>
               </Switch>
-              {/*  */}
             </Row>
           </Col>
         </Row>

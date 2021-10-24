@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
-import TableComponent from "../../../components/TableComponent";
+import TableComponent from "../TableComponent";
 import CardSection from "../CardSection";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";

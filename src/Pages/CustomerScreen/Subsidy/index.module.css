@@ -1,0 +1,8 @@
+.tb {
+  font-size: 12pt;
+  font-weight: 600;
+  text-align: left;
+}
+.tb tr td {
+  padding-left: 22px;
+}

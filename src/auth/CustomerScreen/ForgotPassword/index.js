@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Help from "@mui/icons-material/Help";
 import Typography from "@mui/material/Typography";
 import {
-  
   Avatar,
   Button,
   Box,
@@ -14,29 +13,28 @@ import {
 } from "@mui/material";
 
 import { Container, Row, Col } from "react-bootstrap";
-import { NavLink, useHistory } from "react-router-dom";
+// import { NavLink, useHistory } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
-import { useDispatch } from "react-redux";
-
-
+// import { useDispatch } from "react-redux";
 
 const CusForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const [values, setValues] = useState({
-    email: ""
+    email: "",
   });
   const handleSubmit = (event) => {
     event.preventDefault();
-    const user = {
-      email: values.email,
-      
-    };
-    
+    // const user = {
+    //   email: values.email,
+
+    // };
+
+    setLoading(true);
   };
-const handleChange = (prop) => (event) => {
+  const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
   const handleClose = (event, reason) => {
@@ -45,9 +43,10 @@ const handleChange = (prop) => (event) => {
     }
     setOpen(false);
   };
+  console.log(values)
   return (
     <>
-    <Snackbar
+      <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
         autoHideDuration={6000}
@@ -64,7 +63,7 @@ const handleChange = (prop) => (event) => {
       {loading ? (
         <Spinner title={"Wait a moment"} />
       ) : (
-    <Container style={{ backgroundColor: "#9c27b0", height: "100vh" }}>
+        <Container style={{ backgroundColor: "#9c27b0", height: "100vh" }}>
           <Row>
             <Col md={4}></Col>
             <Col md={4}>
@@ -111,7 +110,7 @@ const handleChange = (prop) => (event) => {
                       value={values.email}
                     />
                   </FormControl>
-                  
+
                   <Button
                     type="submit"
                     fullWidth
@@ -127,17 +126,15 @@ const handleChange = (prop) => (event) => {
                   >
                     Get new Password
                   </Button>
-                  </Box>
-                  </Box>
-                  </Col>
-                   
+                </Box>
+              </Box>
+            </Col>
+
             <Col md={4}></Col>
           </Row>
         </Container>
-                  )
-                  }
-                  
+      )}
     </>
-  )
+  );
 };
 export default CusForgotPassword;
