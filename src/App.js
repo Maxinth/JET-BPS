@@ -11,6 +11,7 @@ import PrintPage from "./Pages/CustomerScreen/PrintPage";
 // import PrintPageSecond from "./Pages/RPAScreen/PrintPageSecond";
 import Login from "./auth/CustomerScreen/Login";
 import ForgotPassword from "./auth/CustomerScreen/ForgotPassword";
+import Application from "./Pages/CustomerScreen/Application";
 import SignUp from "./auth/CustomerScreen/SignUp";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import PrivateRoute from "./shared/PrivateRoute";
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/cs/signup" component={SignUp} />
       <PrivateRoute exact path="/customer/login" component={Login} />
       <ProtectedRoute exact path="/trans/:id" component={PrintPage} />
+      <ProtectedRoute exact path="/application" component={Application} />
       <ProtectedRoute path="/customer" component={DashBoard} />
       <PrivateRoute
         exact

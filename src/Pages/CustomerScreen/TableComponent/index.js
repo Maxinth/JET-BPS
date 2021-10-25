@@ -91,6 +91,12 @@ const TableComponent = (props) => {
           )}
         </Col>
         <Col md={12}>
+        {props.loading ? (
+            <Skeleton variant="text" />
+          ) : props.tableBtn || ' '
+          }
+        </Col>
+        <Col md={12}>
           <Box sx={{ padding: "10px" }}>
             {props.loading ? (
               <Stack spacing={4}>
