@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 import TableComponent from "../TableComponent";
-import { Paper, Typography, Skeleton } from "@mui/material";
+import { Paper, Typography, Skeleton,Button } from "@mui/material";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
-import { Link } from "react-router-dom";
+import { Link ,NavLink} from "react-router-dom";
 import classes from "./index.module.css";
 import {
   BarChart,
@@ -35,21 +35,21 @@ const heading = [
   },
   {
     Header: "Subsidy Type",
-    accessor: "description",
+    accessor: "remarks",
     Cell: (props) => (
       <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
     ),
   },
   {
-    Header: "Paying Agency",
-    accessor: "type",
+    Header: "Percentage",
+    accessor: "subsidyPercentage",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      <Link to={`/trans/${props.row.original.id}`}>{props.value} {'%'}</Link>
     ),
   },
   {
     Header: "Amount",
-    accessor: "amt",
+    accessor: "amtApplied",
     Cell: (props) => (
       <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
     ),
@@ -84,6 +84,10 @@ const Subsidy = () => {
   let pending_data = data.filter((dat) => dat.status === "pending");
   let unapprove_data = data.filter((dat) => dat.status === "rejected");
 
+  let table=(<NavLink to="/application" >
+    <Button variant="contained" 
+  sx={{ float:'right' }}>New Application</Button></NavLink>)
+
   return (
     <>
       <Row>
@@ -105,11 +109,11 @@ const Subsidy = () => {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
+                  <XAxis dataKey="reference" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="amt" stackId="a" fill="#8884d8" />
+                  <Bar dataKey="amtApplied" stackId="a" fill="#8884d8" />
                   <Bar dataKey="createdDate" stackId="a" fill="#82ca9d" />
                 </BarChart>
               </ResponsiveContainer>
@@ -170,7 +174,7 @@ const Subsidy = () => {
 
       <Row>
         <Col md={12}>
-          <TableComponent loading={loading} data={data} heading={heading} />
+          <TableComponent tableBtn={table} loading={loading} data={data} heading={heading} />
         </Col>
       </Row>
     </>
