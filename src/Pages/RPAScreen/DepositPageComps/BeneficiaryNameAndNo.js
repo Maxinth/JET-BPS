@@ -1,6 +1,7 @@
 import React from "react";
 import LabeledInputAndDisplay from "./LabeledInput";
 import PropTypes from "prop-types";
+import React from 'react'
 const BeneficiaryNameAndNo = ({ name = "Beneficiary Name" }) => {
   return (
     <>

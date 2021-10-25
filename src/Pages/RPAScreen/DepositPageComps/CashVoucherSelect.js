@@ -2,6 +2,7 @@ import React from "react";
 import { Label, Span, Text } from "./styled";
 import { FormControlLabel, RadioGroup, Radio } from "@mui/material";
 import PropTypes from "prop-types";
+import React from 'react'
 
 const CashVoucherSelect = ({ getPaymentType, selectedOption }) => {
   return (

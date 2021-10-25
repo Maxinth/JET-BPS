@@ -1,17 +1,21 @@
-import React from "react";
-import {TextField} from "@mui/material";
+// import {TextField} from "@mui/material";
 import { Span, Text, Label, Box } from "./styled";
 import PropTypes from "prop-types";
-import React from 'react'
+import { Field } from "formik";
+import React from "react";
 const LabeledInputAndDisplay = ({
   req = false,
   type,
   labelName,
-  value = "",
+
   placeholder,
   handleChange,
-  size="small",
-  inputType="text"
+  // size="small",
+  inputType = "text",
+  error,
+  touched,
+  id,
+  value = "",
 }) => {
   return (
     <Label>
@@ -20,13 +24,13 @@ const LabeledInputAndDisplay = ({
         {labelName}
       </Text>
       {type === "input" && (
-        <TextField
-          variant="outlined"
-          size={size}
-          value={value}
+        <Field
+          // variant="outlined"
+          // size={size}
+
+          name={id}
           placeholder={placeholder}
           type={inputType}
-          onChange={(e) => handleChange(e.target.value)}
         />
       )}
       {type === "display" && <Box>{value}</Box>}
@@ -40,4 +44,5 @@ LabeledInputAndDisplay.propTypes = {
   type: PropTypes.string,
   req: PropTypes.bool,
 };
+
 export default LabeledInputAndDisplay;

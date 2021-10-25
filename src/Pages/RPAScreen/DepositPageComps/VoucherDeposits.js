@@ -3,7 +3,7 @@ import { VoucherBox, InnerVoucherBox } from "./styled";
 import CashDepositScreen from "./CashDepositScreen";
 import { Button } from "@mui/material";
 import VoucherDepositScreen from "./VoucherDepositScreen";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const VoucherDeposits = ({ depositReceived = 0 }) => {
   const [paymentType, setPaymentType] = useState("cash");
