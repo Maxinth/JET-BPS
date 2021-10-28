@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { Field } from "formik";
 
-const LabelBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* border: 1px solid red; */
-  padding: 0.5rem;
-`;
-
 const Label = styled.label`
   display: flex;
   justify-content: center;
@@ -62,6 +54,15 @@ const Label = styled.label`
       }
     }
   }
+`;
+const LabelBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  color: red;
+  /* border: 1px solid red; */
+  padding: 0.5rem;
 `;
 
 const Text = styled.p`
@@ -152,4 +153,25 @@ const Option = styled.option`
   cursor: pointer;
 `;
 
-export { LabelBox, Label, Text, Span, SelectBox, Option, Input, Box };
+const Form = styled.form``;
+const ErrorBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.4rem;
+`;
+export {
+  Form,
+  LabelBox,
+  Label,
+  Text,
+  Span,
+  SelectBox,
+  Option,
+  Input,
+  Box,
+  ErrorBox,
+};
