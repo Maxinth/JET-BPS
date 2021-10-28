@@ -1,3 +1,4 @@
+import React from "react";
 import { Form } from "./styled";
 import MainSearchInput from "./MainSearchInput";
 import {Container} from "@mui/material";

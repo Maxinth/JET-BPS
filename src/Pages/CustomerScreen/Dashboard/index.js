@@ -1,20 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import CardComponent from "../../../components/CardComponent";
-import { Paper, Box } from "@mui/material";
 import axios from "axios";
-import TableComponent from "../../../components/TableComponent";
+import TableComponent from "../TableComponent";
 import CardSection from "../CardSection";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
+import { Link } from "react-router-dom";
+import classes from './index.module.css'
 
 const heading = [
-  { Header: "Date Applied", accessor: "createdDate" },
-  { Header: "Refrence No", accessor: "reference" },
-  { Header: "Subsidy Type", accessor: "description" },
-  { Header: "Paying Agency", accessor: "type" },
-  { Header: "Amount", accessor: "amt" },
-  { Header: "Status", accessor: "status" },
+  {
+    Header: "Date Applied",
+    accessor: "createdDate",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
+  {
+    Header: "Refrence No",
+    accessor: "reference",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
+  {
+    Header: "Subsidy Type",
+    accessor: "description",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
+  {
+    Header: "Paying Agency",
+    accessor: "type",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
+  {
+    Header: "Amount",
+    accessor: "amt",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
+  {
+    Header: "Status",
+    accessor: "status",
+    Cell: (props) => (
+      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+    ),
+  },
 ];
 const API_URL = "http://localhost:3001";
 
@@ -33,23 +69,13 @@ const DashBoard = () => {
       });
   }, [user.id]);
 
-  console.log(data);
   return (
     <>
       <CardSection />
 
       <Row>
-        <Col md={6} style={{ padding: "20px" }}></Col>
-        <Col md={5} style={{ padding: "20px" }}></Col>
-        <Col md={1}></Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <Box sx={{ padding: "10px" }}>
-            <Paper elevation={3}>
-              <TableComponent loading={loading} data={data} heading={heading} />
-            </Paper>
-          </Box>
+        <Col md={12} className={classes.content}>
+          <TableComponent loading={loading} data={data} heading={heading} />
         </Col>
       </Row>
     </>

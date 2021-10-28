@@ -2,11 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import CardComponent from "../../../components/CardComponent";
 import { Paper, Box } from "@mui/material";
-// import {
-
-//   FindInPageSharp
-// } from '@mui/icons-material';
-import TableComponent from "../../../components/TableComponent";
+import TableComponent from "../TableComponent";
 
 const heading = [
   "Date",

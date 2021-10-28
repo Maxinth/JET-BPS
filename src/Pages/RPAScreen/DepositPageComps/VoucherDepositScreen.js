@@ -1,3 +1,4 @@
+import React from "react";
 import LabeledInputAndDisplay from "./LabeledInput";
 import React from "react";
 const VoucherDepositScreen = ({ deposit = 0 }) => {

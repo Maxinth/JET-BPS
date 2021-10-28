@@ -6,7 +6,7 @@ import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { useHistory } from "react-router-dom";
 
 // import { FindInPageSharp } from "@mui/icons-material";
-import TableComponent from "../../../components/TableComponent";
+import TableComponent from "../TableComponent";
 //import classes from "./index.module.css"
 
 const heading = [

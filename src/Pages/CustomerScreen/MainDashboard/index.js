@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import classes from "./index.module.css";
-import SidebarComponent from "../../../components/SidebarComponent";
+import SidebarComponent from "../SidebarComponent";
 import Dashboard from "../Dashboard";
 import PageNotFound from "../../PageNotFound";
 import { PersonSharp, MenuSharp } from "@mui/icons-material";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { Drawer, Box, Snackbar, Alert } from "@mui/material";
-import ListSidebarComponent from "../../../components/ListSidebarComponent";
+import ListSidebarComponent from "../ListSidebarComponent";
 import { useSelector, shallowEqual } from "react-redux";
+import Subsidy from "../Subsidy";
+import Wallet from "../Wallet";
+import Spinner from "../../../components/Spinner";
+import Voucher from "../Voucher";
 
 const MainDashboard = () => {
   const { user } = useSelector((state) => state.auth, shallowEqual);
+  const { loading } = useSelector((state) => state.other, shallowEqual);
   const { path } = useRouteMatch();
   const [state, setState] = useState({});
   const [open, setOpen] = useState(false);
@@ -38,6 +43,9 @@ const MainDashboard = () => {
 
   return (
     <>
+      {loading?<Spinner title={"Signing out ..."} />
+      :(
+        <>
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
@@ -70,7 +78,7 @@ const MainDashboard = () => {
           <SidebarComponent />
           <Col md={10} style={{ backgroundColor: "white" }}>
             <Row>
-              <Col md={12} style={{ padding: "15px" }}>
+              <Col md={12} className={classes.head}>
                 <div>
                   {" "}
                   <span
@@ -95,15 +103,19 @@ const MainDashboard = () => {
               </Col>
               <Switch>
                 <Route exact path={`${path}/`} component={Dashboard} />
+                <Route exact path={`${path}/subsidy`} component={Subsidy} />
+                <Route exact path={`${path}/wallet`} component={Wallet} />
+                <Route exact path={`${path}/voucher`} component={Voucher} />
                 <Route path={`${path}/*`}>
                   <PageNotFound />
                 </Route>
               </Switch>
-              {/*  */}
             </Row>
           </Col>
         </Row>
       </Container>
+      </>
+      )}
     </>
   );
 };

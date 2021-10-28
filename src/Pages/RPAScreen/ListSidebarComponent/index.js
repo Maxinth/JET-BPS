@@ -17,14 +17,14 @@ import {
 } from "@mui/icons-material";
 import classes from "./index.module.css";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import ListComponent from "../ListComponent";
-import { signout } from "../../slices/auth";
+import ListComponent from "../../../components/ListComponent";
+import { signout } from "../../../slices/auth";
 import { useDispatch } from "react-redux";
 
 const ListSidebarComponent = () => {
   const { path } = useRouteMatch();
-  const dispatch = useDispatch();
-  const history = useHistory();
+  let dispatch = useDispatch();
+  let history = useHistory();
 
   const logOut = () => {
     dispatch(signout())
@@ -32,10 +32,11 @@ const ListSidebarComponent = () => {
       .then(() => {
         history.push("/customer/login");
       });
+    history.push("/customer/login");
   };
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", height: "100vh", position: "relative" }}>
         <div className={classes.Header}>
           <span>BPS</span>
         </div>

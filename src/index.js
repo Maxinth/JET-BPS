@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'react-credit-cards/es/styles-compiled.css'
 
 ReactDOM.render(
   
