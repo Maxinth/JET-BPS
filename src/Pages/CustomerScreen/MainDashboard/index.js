@@ -10,9 +10,13 @@ import { Drawer, Box, Snackbar, Alert } from "@mui/material";
 import ListSidebarComponent from "../ListSidebarComponent";
 import { useSelector, shallowEqual } from "react-redux";
 import Subsidy from "../Subsidy";
+import Wallet from "../Wallet";
+import Spinner from "../../../components/Spinner";
+import Voucher from "../Voucher";
 
 const MainDashboard = () => {
   const { user } = useSelector((state) => state.auth, shallowEqual);
+  const { loading } = useSelector((state) => state.other, shallowEqual);
   const { path } = useRouteMatch();
   const [state, setState] = useState({});
   const [open, setOpen] = useState(false);
@@ -39,6 +43,9 @@ const MainDashboard = () => {
 
   return (
     <>
+      {loading?<Spinner title={"Signing out ..."} />
+      :(
+        <>
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
@@ -97,6 +104,8 @@ const MainDashboard = () => {
               <Switch>
                 <Route exact path={`${path}/`} component={Dashboard} />
                 <Route exact path={`${path}/subsidy`} component={Subsidy} />
+                <Route exact path={`${path}/wallet`} component={Wallet} />
+                <Route exact path={`${path}/voucher`} component={Voucher} />
                 <Route path={`${path}/*`}>
                   <PageNotFound />
                 </Route>
@@ -105,6 +114,8 @@ const MainDashboard = () => {
           </Col>
         </Row>
       </Container>
+      </>
+      )}
     </>
   );
 };

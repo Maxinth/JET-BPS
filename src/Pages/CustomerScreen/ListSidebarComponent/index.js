@@ -18,7 +18,8 @@ import {
 import classes from "./index.module.css";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import ListComponent from "../../../components/ListComponent";
-import { signout } from "../../../slices/auth";
+import { signout} from "../../../slices/auth";
+import { isloading } from "../../../slices/allState";
 import { useDispatch } from "react-redux";
 
 const ListSidebarComponent = () => {
@@ -27,12 +28,16 @@ const ListSidebarComponent = () => {
   let history = useHistory();
 
   const logOut = () => {
-    dispatch(signout())
+    dispatch(isloading(true))
+    setTimeout(()=>{
+      dispatch(signout())
       .unwrap()
       .then(() => {
+        dispatch(isloading(false))
         history.push("/customer/login");
       });
     history.push("/customer/login");
+    },3000)
   };
   return (
     <>

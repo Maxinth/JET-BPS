@@ -6,6 +6,7 @@ import CardSection from "../CardSection";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
 import { Link } from "react-router-dom";
+import classes from './index.module.css'
 
 const heading = [
   {
@@ -73,7 +74,7 @@ const DashBoard = () => {
       <CardSection />
 
       <Row>
-        <Col md={12}>
+        <Col md={12} className={classes.content}>
           <TableComponent loading={loading} data={data} heading={heading} />
         </Col>
       </Row>

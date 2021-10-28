@@ -29,7 +29,7 @@ import { Prompt } from 'react-router'
 
 const API_URL = "http://localhost:3001";
 
-const Application=()=>{
+const BuyVoucher=()=>{
     const { user } = useSelector((state) => state.auth, shallowEqual);
     const [data, setData] = React.useState([]);
     const [loading,setLoading]=React.useState(false)
@@ -83,11 +83,9 @@ setOpen(true)
         <Link underline="hover" key="1" color="inherit" href="/customer">
           Dashboard
         </Link>,
-        <Link underline="hover" key="2" color="inherit" href="/customer/wallet">
-          Subsidy
-        </Link>,
+        
         <Typography key="3" color="text.primary">
-          New Application
+          Buy Voucher
         </Typography>,
       ];
       React.useEffect(() => {
@@ -390,4 +388,4 @@ setValues({
 }
 
 
-export default Application
+export default BuyVoucher
