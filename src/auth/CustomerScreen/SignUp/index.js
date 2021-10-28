@@ -6,26 +6,16 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LabeledInput from "./LabeledInput";
 import { LabelBox } from "./styled";
 import LabeledSelect from "./LabeledSelect";
+import { initState as initialValues } from "./data";
+import { validationSchema } from "./validations";
+import { Form, Formik, ErrorMessage } from "formik";
 import React from "react";
-import {
-  useFormik,
-  Form,
-  // Formik, Form
-} from "formik";
-import { initialValues } from "./validations";
+
 const theme = createTheme();
 
 export default function SignUp() {
-  // const onSubmit = (val) => console.log(val);
-  // const onReset = () => console.log("reset");
-  const formik = useFormik({
-    initialValues,
-    // onSubmit,
-    // onReset,
-    // DisplayingErrorMessagesSchema
-  });
+  const onSubmit = (val) => console.log(val);
 
-  console.log("values = ", formik.values);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main">
@@ -44,16 +34,12 @@ export default function SignUp() {
           <Typography component="h1" variant="h3" sx={{ marginBottom: 6 }}>
             Sign up
           </Typography>
-          {/* <Formik */}
-          {/* initialValues={initialValues}
-            validationSchema={DisplayingErrorMessagesSchema}
-            onSubmit={(values) => {
-              // same shape as initial value
-              console.log(values);
-            }} */}
-          <Form onSubmit={formik.handleSubmit}>
-            {/* {(errors, touched) => ( */}
-            <>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            <Form>
               <LabelBox>
                 <LabeledInput
                   type="input"
@@ -62,11 +48,11 @@ export default function SignUp() {
                   placeholder="first name"
                   labelName="First Name"
                   inputType="text"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.firstName}
-                  // {...formik.getFieldProps("firstName")}
                 />
+
+                <ErrorMessage name="firstName" />
               </LabelBox>
+
               <LabelBox>
                 <LabeledInput
                   type="input"
@@ -75,18 +61,18 @@ export default function SignUp() {
                   placeholder="surname"
                   labelName="Surname"
                   inputType="text"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.surName}
                 />
+
+                <ErrorMessage name="surName" />
               </LabelBox>
               <LabelBox>
                 <LabeledSelect
                   labelName="Select Country"
                   id="country"
                   req={true}
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.country}
                 />
+
+                <ErrorMessage name="country" />
               </LabelBox>
               <LabelBox>
                 <LabeledInput
@@ -96,9 +82,9 @@ export default function SignUp() {
                   placeholder="mobile number"
                   labelName="Mobile Number"
                   inputType="text"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.mobileNumber}
                 />
+
+                <ErrorMessage name="mobileNumber" />
               </LabelBox>
               <LabelBox>
                 <LabeledInput
@@ -108,9 +94,9 @@ export default function SignUp() {
                   placeholder="Email"
                   labelName="Email Addresss"
                   inputType="email"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.email}
                 />
+
+                <ErrorMessage name="email" />
               </LabelBox>
               <LabelBox>
                 <LabeledInput
@@ -120,9 +106,9 @@ export default function SignUp() {
                   placeholder="Password"
                   labelName="Password"
                   inputType="password"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.password}
                 />
+
+                <ErrorMessage name="password" />
               </LabelBox>
               <LabelBox>
                 <LabeledInput
@@ -132,22 +118,20 @@ export default function SignUp() {
                   placeholder="Retype password"
                   labelName="Retype password"
                   inputType="password"
-                  // handleChange={formik.handleChange}
-                  // value={formik.values.retypePassword}
                 />
-              </LabelBox>
 
+                <ErrorMessage name="retypePassword" />
+              </LabelBox>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign up
+                Sign Up
               </Button>
-            </>
-            {/* )} */}
-          </Form>
+            </Form>
+          </Formik>
         </Box>
       </Container>
     </ThemeProvider>
