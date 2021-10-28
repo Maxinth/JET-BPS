@@ -2,18 +2,14 @@
 import { Span, Text, Label, Box } from "./styled";
 import PropTypes from "prop-types";
 import { Field } from "formik";
-import React from "react";
+import React from 'react'
+
 const LabeledInputAndDisplay = ({
   req = false,
   type,
   labelName,
-
   placeholder,
-  handleChange,
-  // size="small",
   inputType = "text",
-  error,
-  touched,
   id,
   value = "",
 }) => {
@@ -24,14 +20,7 @@ const LabeledInputAndDisplay = ({
         {labelName}
       </Text>
       {type === "input" && (
-        <Field
-          // variant="outlined"
-          // size={size}
-
-          name={id}
-          placeholder={placeholder}
-          type={inputType}
-        />
+        <Field name={id} placeholder={placeholder} type={inputType} />
       )}
       {type === "display" && <Box>{value}</Box>}
     </Label>
