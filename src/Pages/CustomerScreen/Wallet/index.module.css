@@ -1,8 +1,16 @@
-.content{
-    max-height: 500px;
+.tb {
+    font-size: 12pt;
+    font-weight: 600;
+    text-align: left;
+  }
+  .tb tr td {
+    padding-left: 22px;
+  }
+  .content{
+    max-height: 350px;
     overflow-y: scroll;
-}
-.content::-webkit-scrollbar {
+  }
+  .content::-webkit-scrollbar {
     width: 5px;
   }
   

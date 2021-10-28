@@ -12,9 +12,11 @@ import PrintPage from "./Pages/CustomerScreen/PrintPage";
 import Login from "./auth/CustomerScreen/Login";
 import ForgotPassword from "./auth/CustomerScreen/ForgotPassword";
 import Application from "./Pages/CustomerScreen/Application";
+import Funds from "./Pages/CustomerScreen/Funds";
 import SignUp from "./auth/CustomerScreen/SignUp";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import PrivateRoute from "./shared/PrivateRoute";
+import BuyVoucher from "./Pages/CustomerScreen/BuyVoucher";
 
 function App() {
   const routes = (
@@ -23,6 +25,8 @@ function App() {
       <PrivateRoute exact path="/customer/login" component={Login} />
       <ProtectedRoute exact path="/trans/:id" component={PrintPage} />
       <ProtectedRoute exact path="/application" component={Application} />
+      <ProtectedRoute exact path="/fund" component={Funds} />
+      <ProtectedRoute exact path="/buy" component={BuyVoucher} />
       <ProtectedRoute path="/customer" component={DashBoard} />
       <PrivateRoute
         exact

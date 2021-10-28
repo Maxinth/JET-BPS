@@ -137,7 +137,7 @@ const Subsidy = () => {
                   <td>Total Applied</td>
                   <td>
                     {data.length > 0
-                      ? "$" + data.reduce((a, v) => (a = a + v.amt), 0)
+                      ? "$" + data.reduce((a, v) => (a = a + v.amtApplied), 0)
                       : null}
                   </td>
                 </tr>
@@ -145,7 +145,7 @@ const Subsidy = () => {
                   <td>Total Approved</td>
                   <td>
                     {data.length > 0
-                      ? "$" + approved_data.reduce((a, v) => (a = a + v.amt), 0)
+                      ? "$" + approved_data.reduce((a, v) => (a = a + v.amtApplied), 0)
                       : null}
                   </td>
                 </tr>
@@ -154,7 +154,7 @@ const Subsidy = () => {
                   <td>
                     {data.length > 0
                       ? "$" +
-                        unapprove_data.reduce((a, v) => (a = a + v.amt), 0)
+                        unapprove_data.reduce((a, v) => (a = a + v.amtApplied), 0)
                       : null}
                   </td>
                 </tr>
@@ -162,7 +162,7 @@ const Subsidy = () => {
                   <td>Awaiting Approval</td>
                   <td>
                     {data.length > 0
-                      ? "$" + pending_data.reduce((a, v) => (a = a + v.amt), 0)
+                      ? "$" + pending_data.reduce((a, v) => (a = a + v.amtApplied), 0)
                       : null}
                   </td>
                 </tr>
@@ -173,7 +173,7 @@ const Subsidy = () => {
       </Row>
 
       <Row>
-        <Col md={12}>
+        <Col md={12} className={classes.content}>
           <TableComponent tableBtn={table} loading={loading} data={data} heading={heading} />
         </Col>
       </Row>

@@ -12,7 +12,7 @@ import {
   Form,
   // Formik, Form
 } from "formik";
-import { DisplayingErrorMessagesSchema, initialValues } from "./validations";
+import { initialValues } from "./validations";
 const theme = createTheme();
 
 export default function SignUp() {
