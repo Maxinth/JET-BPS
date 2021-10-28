@@ -21,7 +21,8 @@ import BuyVoucher from "./Pages/CustomerScreen/BuyVoucher";
 function App() {
   const routes = (
     <Switch>
-      <Route exact path="/cs/signup" component={SignUp} />
+
+      <Route path="/customer/signup" component={SignUp} />
       <PrivateRoute exact path="/customer/login" component={Login} />
       <ProtectedRoute exact path="/trans/:id" component={PrintPage} />
       <ProtectedRoute exact path="/application" component={Application} />
@@ -34,12 +35,7 @@ function App() {
         component={ForgotPassword}
       />
 
-      {/* <PrivateRoute exact path={`/login`} component={Login} /> */}
-      {/* <PrivateRoute exact path={`/forgot`} component={ForgotPassword} />
       <ProtectedRoute path="/home" component={DashBoard} />
-      <Route exact path="/funds" component={Funds} /> */}
-
-      {/* <Route exact path="/print2" component={PrintPageSecond} /> */}
       <Route exact path="/">
         <Redirect to={`/customer`} />
       </Route>
