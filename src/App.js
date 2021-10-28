@@ -17,7 +17,7 @@ import ProtectedRoute from "./shared/ProtectedRoute";
 function App() {
   const routes = (
     <Switch>
-      <Route path="/cs/signup" component={SignUp} />
+      <Route path="/customer/signup" component={SignUp} />
       <ProtectedRoute exact path="/customer" component={CusDashBoard} />
       <Route exact path={`/customer/forgot`} component={CusForgotPass} />
       <Route exact path={`/customer/login`} component={CusLogin} />
