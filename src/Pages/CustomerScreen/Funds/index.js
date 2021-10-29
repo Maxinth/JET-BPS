@@ -40,7 +40,7 @@ setValue(e)
   ];
 
   return (
-    <Container fluid>
+    <Container fluid style={{ backgroundColor:'#9c27b0',height:'100vh'}} >
       <motion.div
               initial={{x:'-100vw'}}
               animate={{ x:0}}

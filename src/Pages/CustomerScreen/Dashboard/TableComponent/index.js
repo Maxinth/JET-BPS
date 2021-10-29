@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Table, Row, Col } from "react-bootstrap";
+import { Table, Container,Row, Col } from "react-bootstrap";
 import { useTable, usePagination, useGlobalFilter,useSortBy } from "react-table";
 import classes from "./index.module.css";
 import {
@@ -17,11 +17,14 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateRangePicker from "@mui/lab/DateRangePicker";
 import { motion, AnimatePresence } from 'framer-motion'
+import ModalDisplay from "../../ModalDisplay";
 
 const TableComponent = (props) => {
   const [value, setValue] = useState([null, null]);
   const data = useMemo(() => props.data, [props.data]);
   const columns = useMemo(() => props.heading, [props.heading]);
+  const [show, setShow] = useState(false);
+const [selectedRow, setSelectedRow] = useState({});
   const spring = React.useMemo(
     () => ({
       type: 'spring',
@@ -30,6 +33,12 @@ const TableComponent = (props) => {
     }),
     []
   )
+  const handleClose = () => setShow(false);
+const handleShow = (selected) => {
+  setSelectedRow(selected);
+  console.log(selectedRow)
+  setShow(true);
+  };
   const tableInstance = useTable(
     { columns, data },
     useGlobalFilter,
@@ -57,6 +66,78 @@ const TableComponent = (props) => {
 
   return (
     <>
+
+    <ModalDisplay open={show} handleClose={handleClose}  
+    title={'Transaction Details'}>
+    <Container fluid>
+        <Col md={12} >
+              <Row >
+                <Col md={8} className="text-left" >
+
+        <table className={classes.table}>
+                    <tr>
+                      <td>Reference Number</td>
+
+                      <td>{selectedRow.reference}</td>
+                    </tr>
+                    <tr>
+                      <td>Beneficiary Name</td>
+
+                      <td>13GHTNU3839390</td>
+                    </tr>
+                    <tr>
+                      <td>Date Applied</td>
+
+                      <td>{selectedRow.createdDate}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Amount Applied</td>
+
+                      <td>{selectedRow.amt}</td>
+                    </tr>
+                    <tr>
+                      <td>Amount Approved</td>
+
+                      <td>$8900000</td>
+                    </tr>
+                    <tr>
+                      <td>Receiving Paying Agency (RPA)</td>
+
+                      <td>$8900000</td>
+                    </tr>
+                    <tr>
+                      <td>Approved Office</td>
+
+                      <td>$7000000</td>
+                    </tr>
+                    <tr>
+                      <td>Proccesed Date</td>
+
+                      <td>{selectedRow.processDate}</td>
+                    </tr>
+                  </table>
+        </Col>
+        <Col md={4}>
+                
+                  <table className={classes.table2}>
+                    <tr>
+                      <td>Subsidy Type</td>
+                      <td>seeding Subsidy</td>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <td>{data.status}</td>
+                    </tr>
+                  </table>
+        
+
+</Col>
+</Row>
+</Col>
+</Container>
+</ModalDisplay>
+    
       <Row>
         <Col md={6} style={{ padding: "20px" }}>
           {props.loading ? (
@@ -161,10 +242,15 @@ const TableComponent = (props) => {
                             prepareRow(row);
                             return (
                               <motion.tr {...row.getRowProps({
-                                layoutTransition: spring})}>
+                                layoutTransition: spring})} onClick={() =>   handleShow(row.original)} 
+                                key={row.getRowProps().key}
+                                
+                                >
                                 {row.cells.map((cell) => {
                                   return (
-                                    <motion.td {...cell.getCellProps()}>
+                                    <motion.td {...cell.getCellProps()}
+                                    
+                                    >
                                       {cell.render("Cell")}
                                     </motion.td>
                                   );

@@ -107,7 +107,11 @@ const Bank = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ float: "right" }}
+                  sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}
                 >
                   Confirm
                 </Button>

@@ -65,7 +65,8 @@ const CardSection = () => {
             >
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", height: "160px", padding: "20px" }}
+              sx={{ textAlign: "center", height: "160px", padding: "20px",bgcolor:'#9c27b0',
+              color:'white'}}
             >
               <Typography variant="h4" component="h4">
                 Wallet Balance
@@ -89,7 +90,8 @@ const CardSection = () => {
             >
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
+              sx={{ textAlign: "center", Height: "160px", padding: "20px",bgcolor:'#9c27b0',
+              color:'white'}}
             >
               <Typography variant="h4" component="h4">
                 Subsidy Metric
@@ -136,8 +138,9 @@ const CardSection = () => {
             >
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
-            >
+              sx={{ textAlign: "center", Height: "160px", padding: "20px",bgcolor:'#9c27b0',
+              color:'white'}}
+                          >
               <Typography variant="h4" component="h4">
                 Voucher Metric
               </Typography>

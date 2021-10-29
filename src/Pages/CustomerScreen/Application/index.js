@@ -167,11 +167,12 @@ setValues({
       </Snackbar>
       {loading ? (
         <Spinner title={"Wait a moment"} />
+        
       ) : (
         <>
         {change?<Success reference={values.reference}/>
         :
-<Container fluid>
+<Container fluid style={{ backgroundColor:'#9c27b0',height:'100vh'}}>
 <motion.div
               initial={{x:'150'}}
               animate={{ x:0}}
@@ -370,7 +371,11 @@ setValues({
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ float: "right" }}
+                  sx={{ float: "right",bgcolor:'#9c27b0',
+                '&:hover':{
+                  bgcolor:'#9c27b0'
+                }
+                }}
                   onClick={handleSubmit}
                 >
                   Submit

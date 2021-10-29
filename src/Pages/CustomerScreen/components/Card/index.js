@@ -5,6 +5,7 @@ import {
   TextField,
   Button,
   Stack,
+  Paper
 } from "@mui/material";
 import { Prompt } from 'react-router'
 import { useHistory } from "react-router";
@@ -47,9 +48,11 @@ const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,erro
         />
     </Col>
 <Col md={6}>
+  
 <div id="PaymentForm">
         <form ref={c => (form = c)} onSubmit={handleSubmit}>
           <Stack spacing={2}>
+          <Paper>
         <Stack>
               <FormControl fullWidth>
                     <TextField
@@ -117,7 +120,12 @@ const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,erro
 
 
               </Stack>
-              <Button variant='contained' type='submit'>Pay</Button>
+              </Paper>
+              <Button variant='contained' type='submit' sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}>Pay</Button>
               <Alert variant={error.variant} show={error.show}>{error.message}</Alert>
               </Stack>
 
@@ -126,6 +134,7 @@ const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,erro
               <input type="hidden" name="issuer" value={state.issuer} />
         </form>
       </div>
+      
 </Col>
 <Col md={1}></Col>
   </Row>

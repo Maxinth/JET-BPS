@@ -1,14 +1,32 @@
 .tb thead tr th {
   background-color: #9c27b0 !important;
-  border: 0px !important;
+  border: none !important;
   color: white;
   font-size: 10pt;
   
 }
-.tb tbody tr td a {
+.table tr td {
+  padding: 15px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.table2{
+  margin-top:50%;
+}
+.table2 tr td {
+  padding: 15px;
+  font-weight: 400;
+  text-align: left;
+  
+}
+.tb tbody tr td {
   text-decoration: none;
   color: #222222;
   font-size: 9pt;
+}
+.tb tbody tr:hover {
+cursor: pointer;
 }
 
 .table::-webkit-scrollbar {
@@ -80,4 +98,24 @@
     padding: 0px !important;
     background-color: whitesmoke;
   }
+}
+
+
+@media print {
+  button{
+    display:none !important;
+  }
+
+  .table tr td {
+    padding: 15px;
+    font-weight: 500;
+    text-align: left;
+  }
+  .table2{
+    padding: 15px;
+    font-weight: 500;
+    text-align: left;
+    margin-top:0%;
+  }
+ 
 }

@@ -20,7 +20,7 @@ export default function SignUp() {
 
   return (
     
-      <Container fluid  style={{ backgroundColor: "#9c27b0", height: "fit-content" }}>
+      <Container fluid  style={{ backgroundColor: "#9c27b0", height: "fit-content",height:'100vh' }}>
         <motion.div  
         initial={{ opacity:0 }}
         animate={{ opacity:1 }}
@@ -37,15 +37,16 @@ export default function SignUp() {
               >
         <Box
           sx={{
+          
             display: "flex",
             bgcolor: "#e8a8f3",
             color: " #9c27b0",
             flexDirection: "column",
             alignItems: "center",
             boxShadow: "2px 0px 10px rgb(0,0,0,0.4)",
-            padding: "35px",
+            padding: "20px",
             maxWidth: "100%",
-            margin: "5rem auto",
+            margin: "2rem auto",
           }}
         >
           <Typography component="h1" variant="h3" sx={{ marginBottom: 6 }}>
@@ -157,7 +158,7 @@ export default function SignUp() {
             </Form>
           </Formik>
           <NavLink to={`/customer/login`} style={{ textAlign: "center" }}>
-                      Login
+                     Already have an Account? Click here to Login
                     </NavLink>
         </Box>
         </motion.div>

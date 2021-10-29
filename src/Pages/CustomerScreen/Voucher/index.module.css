@@ -14,3 +14,11 @@
     background-color: #9c27b0;
     outline: 1px solid rgb(238, 189, 235);
   }
+  .tb {
+    font-size: 12pt;
+    font-weight: 600;
+    text-align: left;
+  }
+  .tb tr td {
+    padding-left: 22px;
+  }

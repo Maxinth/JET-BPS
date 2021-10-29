@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
-import TableComponent from "../TableComponent";
+import TableComponent from "./TableComponent";
 import { Paper, Typography, Skeleton,Button } from "@mui/material";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
@@ -26,35 +26,35 @@ const heading = [
     Header: "Date",
     accessor: "createdDate",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{format( new Date(props.value),'dd/MM/yyyy')}</Link>
+      format( new Date(props.value),'dd/MM/yyyy')
     ),
   },
   {
     Header: "Description",
     accessor: "description",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "TXN Refrence NO",
     accessor: "number",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "Type",
     accessor: "type",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "Amount",
     accessor: "amt",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   
@@ -80,7 +80,11 @@ const Wallet = () => {
  
   let table=(<NavLink to="/fund" >
     <Button variant="contained" 
-  sx={{ float:'right' }}>Fund Wallet</Button></NavLink>)
+  sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}>Fund Wallet</Button></NavLink>)
 
   return (
     <>
@@ -97,8 +101,9 @@ const Wallet = () => {
               >
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", height: "160px", padding: "20px" }}
-            >
+              sx={{ textAlign: "center", height: "160px", padding: "20px",bgcolor:'#9c27b0',
+              color:'white'}}
+                          >
               <Typography variant="h4" component="h4">
                 Wallet Balance
               </Typography>{" "}
@@ -129,8 +134,8 @@ const Wallet = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="amt" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="balance" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="amt" stroke="#9c27b0" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="balance" stroke="rgb(238, 189, 235)" />
         </LineChart>
       </ResponsiveContainer>
             </Paper>

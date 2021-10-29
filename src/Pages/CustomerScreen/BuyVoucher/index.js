@@ -128,7 +128,7 @@ const handleChange = (prop) => (event) => {
       ) : (
         <>
         
-<Container fluid>
+<Container fluid style={{ backgroundColor:'#9c27b0',height:'100vh'}}>
 <motion.div
               initial={{x:'200vw'}}
               animate={{ x:0}}
@@ -156,14 +156,15 @@ const handleChange = (prop) => (event) => {
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
             <motion.div
-              initial={{x:'-55'}}
-              animate={{ x:0}}
-              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              initial={{y:'55'}}
+              animate={{ y:0}}
+              transition={{ delay:1.2,type:'spring',stiffness:150}}
               
               >
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", height: "160px", padding: "20px" }}
+              sx={{ textAlign: "center", height: "160px", padding: "20px",bgcolor:'#9c27b0',
+              color:'white'}}
             >
               <Typography variant="h4" component="h4">
               {data.length > 0 ? "$" + data[0].balance : null}
@@ -255,7 +256,11 @@ type='number'
               transition={{ delay:0.3,duration:0.2, type:'spring',stiffness:100}}
               
               >
-   <Button variant="contained">Send OTP</Button>
+   <Button variant="contained" sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}>Send OTP</Button>
    </motion.div>
    
    
@@ -299,8 +304,13 @@ type='number'
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ float: "right" }}
+            
                   onClick=''
+                  sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}
                 >
                   Buy Voucher
                 </Button>

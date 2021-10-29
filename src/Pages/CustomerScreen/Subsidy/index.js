@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
-import TableComponent from "../TableComponent";
+import TableComponent from "./TableComponent";
 import { Paper, Typography, Skeleton,Button } from "@mui/material";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
@@ -25,42 +25,42 @@ const heading = [
     Header: "Date Applied",
     accessor: "createdDate",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{format( new Date(props.value),'dd/MM/yyyy')}</Link>
+      format( new Date(props.value),'dd/MM/yyyy')
     ),
   },
   {
     Header: "Refrence No",
     accessor: "reference",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "Subsidy Type",
     accessor: "remarks",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "Percentage",
     accessor: "subsidyPercentage",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value} {'%'}</Link>
+      props.value + '%'
     ),
   },
   {
     Header: "Amount",
     accessor: "amtApplied",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
   {
     Header: "Status",
     accessor: "status",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      props.value
     ),
   },
 ];
@@ -88,7 +88,11 @@ const Subsidy = () => {
 
   let table=(<NavLink to="/application" >
     <Button variant="contained" 
-  sx={{ float:'right' }}>New Application</Button></NavLink>)
+  sx={{ float: "right",bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}>New Application</Button></NavLink>)
 
   return (
     <>
@@ -143,7 +147,8 @@ const Subsidy = () => {
               
             <Paper
               elevation={4}
-              sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
+              sx={{ textAlign: "left", Height: "160px", padding: "20px", bgcolor:'#9c27b0',
+               color:'white'}}
             >
               <Typography variant="h4" component="h4">
                 Subsidy Metric
