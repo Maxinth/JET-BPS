@@ -25,6 +25,7 @@ import { useHistory } from "react-router";
 import Spinner from "../../../components/Spinner";
 import Success from "../Success";
 import { Prompt } from 'react-router'
+import { motion } from "framer-motion";
 
 
 const API_URL = "http://localhost:3001";
@@ -54,10 +55,7 @@ subTypeId:null,
 
       });
       
-      const formIsHalfFilledOut=()=>{
-    
-        alert('hey!! leaving?')
-      }
+      
       const handleSubmit = () => {
         if(values.amt_1===null ||values.subTypeId===null){
 setIserror(true)
@@ -135,7 +133,7 @@ setValues({
     return(
 <>
 <Prompt
-    when={formIsHalfFilledOut}
+    when={true}
     message="Are you sure you want to leave?"
   />
 
@@ -174,9 +172,16 @@ setValues({
         {change?<Success reference={values.reference}/>
         :
 <Container fluid>
+<motion.div
+              initial={{x:'150'}}
+              animate={{ x:0}}
+              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              
+              >
       <Row>
         <Col md={1}></Col>
         <Col md={10} className={classes.Section}>
+        
           <Row>
             <Col md={12}>
               <Breadcrumbs
@@ -372,11 +377,13 @@ setValues({
                 </Button>
                 </Col>
                 </Row>
+                
               </Col>
           
           <Col md={1}>
         </Col>
       </Row>
+      </motion.div>
     </Container>
 }
     </>)}

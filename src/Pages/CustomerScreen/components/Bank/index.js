@@ -15,28 +15,32 @@ import {
   Paper
 } from "@mui/material";
 import classes from "./index.module.css";
+import { motion } from "framer-motion";
 
 
 const Bank = () => {
   
 
   let history=useHistory()
-  const formIsHalfFilledOut=()=>{
-
-    alert('hey dont leave')
-  }
-  
+ 
 
 
   return (
     <>
     <Prompt
-    when={formIsHalfFilledOut}
+    when={true}
     message="Are you sure you want to leave?"
   />
+  <motion.div
+              initial={{scale:0}}
+              animate={{ scale:1}}
+              transition={{ delay:0.3,type:'spring',stiffness:130}}
+              
+              >
     <Row>
 <Col md={3}></Col>
 <Col md={6} style={{ position:'relative', height:'350px' }}>
+
   <Paper elevation={4} sx={{ marginTop:'20px' }}>
 <Stack>
 <Col md={12}>
@@ -112,6 +116,7 @@ const Bank = () => {
 <Col md={3}></Col>
 
    </Row>
+   </motion.div>
     </>
   )
 }

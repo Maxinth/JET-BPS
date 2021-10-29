@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import classes from "./index.module.css";
 import SidebarComponent from "../SidebarComponent";
@@ -13,32 +13,22 @@ import Subsidy from "../Subsidy";
 import Wallet from "../Wallet";
 import Spinner from "../../../components/Spinner";
 import Voucher from "../Voucher";
+import { useDispatch } from "react-redux";
+import { setwelcome,setDrawer} from "../../../slices/allState";
+
 
 const MainDashboard = () => {
   const { user } = useSelector((state) => state.auth, shallowEqual);
-  const { loading } = useSelector((state) => state.other, shallowEqual);
+  const { loading,iswelcome,openDrawer } = useSelector((state) => state.other, shallowEqual);
   const { path } = useRouteMatch();
-  const [state, setState] = useState({});
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setOpen(true);
-  }, []);
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setState({ ...state, [anchor]: open });
-  };
+  
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpen(false);
+    dispatch(setwelcome(false)) 
   };
 
   return (
@@ -48,7 +38,7 @@ const MainDashboard = () => {
         <>
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={open}
+        open={iswelcome}
         autoHideDuration={3000}
         onClose={handleClose}
       >
@@ -66,8 +56,8 @@ const MainDashboard = () => {
           <Col md={2} className={classes.Drawer}>
             <Drawer
               anchor="left"
-              open={state["left"]}
-              onClose={toggleDrawer("left", false)}
+              open={openDrawer}
+              onClose={()=>dispatch(setDrawer(false))}
             >
               <Box className={classes.appDraw}>
                 <ListSidebarComponent />
@@ -85,7 +75,7 @@ const MainDashboard = () => {
                     className={classes.tog_icon}
                     style={{ float: "left", display: "none" }}
                   >
-                    <MenuSharp onClick={toggleDrawer("left", true)} />
+                    <MenuSharp onClick={()=>dispatch(setDrawer(true))} />
                   </span>
                   <h6
                     style={{

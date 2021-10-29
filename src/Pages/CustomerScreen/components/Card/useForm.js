@@ -34,7 +34,6 @@ const useForm=()=>{
         if (target.name === "number") {
           target.value = formatCreditCardNumber(target.value);
           
-          console.log(target.value) 
         } 
         
         
@@ -44,12 +43,8 @@ const useForm=()=>{
           target.value = formatExpirationDate(target.value);
           
         } 
-        
-        
         if (target.name === "cvc") {
-        
           target.value = formatCVC(target.value);
-          
         }
         setState({...state, [target.name]: target.value });   
       }

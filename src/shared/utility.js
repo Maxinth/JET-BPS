@@ -5,9 +5,9 @@ import valid from 'card-validator'
 export function validate(values){
 let error={}
 let creditCard=valid.number(values.number)
-creditCard.expiration=valid.expirationDate(values.expiry)
-creditCard.name=valid.cardholderName(values.name)
-creditCard.cvc=valid.cvv(values.cvc)
+creditCard.expirationDate=valid.expirationDate(values.expiry)
+creditCard.cardholderName=valid.cardholderName(values.name)
+creditCard.cvv=valid.cvv(values.cvc)
 
  error.show=true
  error.variant='danger'
@@ -16,45 +16,46 @@ creditCard.cvc=valid.cvv(values.cvc)
  error.number=false
  error.exp=false
  error.cvv=false
-
+console.log(values)
  console.log(creditCard)
-if(values.cvc === null || !values.cvc.trim()){
-    error.message='Credit card CVC is not complete'
+// if(values.cvc === null || !values.cvc.trim()){
+//     error.message='Credit card CVC is not complete'
 
-}else if(!creditCard.cvc.isValid){
-    error.cvc=true
-}else{
-    error.message='Credit Card CVC is Invalid'
-}
+// }else if(!creditCard.cvv.isValid){
+//     error.cvc=true
+// }else{
+//     error.message='Credit Card CVC is Invalid'
+// }
 
-if(values.expiry === null || !values.expiry.trim()){
+// if(values.expiry === null || !values.expiry.trim()){
 
-    error.message='Credit card is Expiration Date is not complete'
+//     error.message='Credit card is Expiration Date is not complete'
 
-}else if(!creditCard.expiration.isValid){
-    error.exp=true
-}else{
-    error.message='Credit Card Expiration Date is Invalid'
-}
+// }else if(!creditCard.expirationDate.isValid){
+//     error.exp=true
+// }else{
+//     error.message='Credit Card Expiration Date is Invalid'
+// }
 
-if(values.number === null || !values.number.trim()){
+// if(values.number === null || !values.number.trim()){
 
-    error.message='Credit card Number is not complete'
+//     error.message='Credit card Number is not complete'
 
-}else if(!creditCard.isValid){
-    error.number=true
-}else{
-    error.message='Credit Card Number is Invalid'
-}
-if(values.name === null || !values.name.trim()){
+// }else if(!creditCard.isValid){
+//     error.number=true
+// }else{
+//     error.message='Credit Card Number is Invalid'
+// }
 
-    error.message='Credit Card  Name is not complete'
+// if(values.name === null || !values.name.trim()){
 
-}else if(!creditCard.name.isValid){
-    error.name=true
-}else{
-    error.message='Credit Card Name is Invalid'
-}
+//     error.message='Credit Card  Name is not complete'
+
+// }else if(!creditCard.cardholderName.isValid){
+//     error.name=true
+// }else{
+//     error.message='Credit Card Name is Invalid
+// }
 
 if(error.cname && error.cvc && error.cexp && error.cnumber){
     error.variant='success'
@@ -97,7 +98,7 @@ export function formatCreditCardNumber(value) {
       nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
         4,
         8
-      )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 19)}`;
+      )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 16)}`;
       break;
   }
 
@@ -106,7 +107,7 @@ export function formatCreditCardNumber(value) {
 
 export function formatCVC(value, prevValue, allValues = {}) {
   const clearValue = clearNumber(value);
-  let maxLength = 4;
+  let maxLength = 3
 
   if (allValues.number) {
     const issuer = Payment.fns.cardType(allValues.number);

@@ -11,6 +11,7 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
+import {motion} from 'framer-motion'
 
 import { Container, Row, Col } from "react-bootstrap";
 // import { NavLink, useHistory } from "react-router-dom";
@@ -64,9 +65,20 @@ const CusForgotPassword = () => {
         <Spinner title={"Wait a moment"} />
       ) : (
         <Container style={{ backgroundColor: "#9c27b0", height: "100vh" }}>
+          <motion.div  
+        initial={{ opacity:0 }}
+        animate={{ opacity:1 }}
+        transition={{ delay:0.4 }}
+        >
           <Row>
             <Col md={4}></Col>
             <Col md={4}>
+            <motion.div
+              initial={{ y:'150vh'}}
+              animate={{ y: -10}}
+              transition={{ delay:0.4, type:'spring',stiffness:110}}
+              
+              >
               <Box
                 sx={{
                   marginTop: "30%",
@@ -128,10 +140,12 @@ const CusForgotPassword = () => {
                   </Button>
                 </Box>
               </Box>
+              </motion.div>
             </Col>
 
             <Col md={4}></Col>
           </Row>
+          </motion.div>
         </Container>
       )}
     </>

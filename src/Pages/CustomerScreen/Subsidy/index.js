@@ -17,13 +17,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { format } from "date-fns";
+import {motion} from 'framer-motion'
 
 const heading = [
   {
     Header: "Date Applied",
     accessor: "createdDate",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      <Link to={`/trans/${props.row.original.id}`}>{format( new Date(props.value),'dd/MM/yyyy')}</Link>
     ),
   },
   {
@@ -95,6 +97,12 @@ const Subsidy = () => {
           {loading ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+            initial={{ x:'55'}}
+            animate={{ x: 0}}
+            transition={{ delay:0.3, type:'spring',stiffness:130}}
+            
+            >
             <Paper elevation={4} sx={{ height: "300px", padding: "10px" }}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
@@ -113,11 +121,12 @@ const Subsidy = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="amtApplied" stackId="a" fill="#8884d8" />
-                  <Bar dataKey="createdDate" stackId="a" fill="#82ca9d" />
+                  <Bar dataKey="amtApplied" stackId="a" fill="#9c27b0" />
+                  <Bar dataKey="createdDate" stackId="a" fill="rgb(238, 189, 235)" />
                 </BarChart>
               </ResponsiveContainer>
             </Paper>
+            </motion.div>
           )}
         </Col>
 
@@ -125,6 +134,13 @@ const Subsidy = () => {
           {loading ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+            initial={{ x:'55'}}
+            animate={{ x: 0}}
+            transition={{ delay:0.3, type:'spring',stiffness:110}}
+            
+            >
+              
             <Paper
               elevation={4}
               sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
@@ -168,13 +184,21 @@ const Subsidy = () => {
                 </tr>
               </table>
             </Paper>
+            </motion.div>
           )}
         </Col>
       </Row>
 
       <Row>
         <Col md={12} className={classes.content}>
+        <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:0.2,duration:0.3}}
+              
+              >
           <TableComponent tableBtn={table} loading={loading} data={data} heading={heading} />
+          </motion.div>
         </Col>
       </Row>
     </>

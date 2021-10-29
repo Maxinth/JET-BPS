@@ -19,7 +19,7 @@ import classes from "./index.module.css";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import ListComponent from "../../../components/ListComponent";
 import { signout} from "../../../slices/auth";
-import { isloading } from "../../../slices/allState";
+import { isloading,setDrawer } from "../../../slices/allState";
 import { useDispatch } from "react-redux";
 
 const ListSidebarComponent = () => {
@@ -41,7 +41,9 @@ const ListSidebarComponent = () => {
   };
   return (
     <>
-      <Box sx={{ width: "100%", height: "100vh", position: "relative" }}>
+      <Box sx={{ width: "100%", height: "100vh", position: "relative" }}
+      
+      onClick={()=>dispatch(setDrawer(false))}>
         <div className={classes.Header}>
           <span>BPS</span>
         </div>

@@ -2,7 +2,10 @@ import { createSlice} from "@reduxjs/toolkit";
 
 
 export const initialState = {
-  loading:false }
+  loading:false,
+iswelcome:false,
+openDrawer:false
+}
 
 
 const othersSlice = createSlice({
@@ -11,6 +14,14 @@ const othersSlice = createSlice({
   reducers:{
     isloading:(state,action)=>{
       state.loading=action.payload
+    },
+    setwelcome:(state,action)=>{
+
+      state.iswelcome=action.payload
+    },
+    setDrawer:(state,action)=>{
+
+      state.openDrawer=action.payload
     }
   }
 }
@@ -18,5 +29,5 @@ const othersSlice = createSlice({
 
 
 
-export const {isloading}=othersSlice.actions
+export const {isloading,setwelcome,setDrawer}=othersSlice.actions
 export default othersSlice.reducer

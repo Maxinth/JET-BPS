@@ -5,6 +5,7 @@ import axios from "axios";
 import { authHeader } from "../../../services/auth_service";
 import { useSelector, shallowEqual } from "react-redux";
 import classes from "./index.module.css";
+import { motion } from "framer-motion";
 
 const API_URL = "http://localhost:3001";
 
@@ -56,6 +57,12 @@ const CardSection = () => {
           {isloading && isloading1 && isloading2 ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+            initial={{ y:'-25'}}
+            animate={{ y: 0}}
+            transition={{ delay:0.2, type:'spring',stiffness:110}}
+            
+            >
             <Paper
               elevation={4}
               sx={{ textAlign: "center", height: "160px", padding: "20px" }}
@@ -67,12 +74,19 @@ const CardSection = () => {
                 {data.length > 0 ? "$" + data[0].balance : null}
               </Typography>
             </Paper>
+            </motion.div>
           )}
         </Col>
         <Col md={4} style={{ padding: "30px" }}>
           {isloading && isloading1 && isloading2 ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+            initial={{ x:'55'}}
+            animate={{ x: 0}}
+            transition={{ delay:0.3, type:'spring',stiffness:110}}
+            
+            >
             <Paper
               elevation={4}
               sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
@@ -107,12 +121,19 @@ const CardSection = () => {
                 </tr>
               </table>
             </Paper>
+            </motion.div>
           )}
         </Col>
         <Col md={4} style={{ padding: "30px" }}>
           {isloading && isloading1 && isloading2 ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+            initial={{ y:'55'}}
+            animate={{ y: 0}}
+            transition={{ delay:0.4, type:'spring',stiffness:110}}
+            
+            >
             <Paper
               elevation={4}
               sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
@@ -143,6 +164,7 @@ const CardSection = () => {
                 </tr>
               </table>
             </Paper>
+            </motion.div>
           )}
         </Col>
       </Row>

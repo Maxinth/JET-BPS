@@ -27,6 +27,7 @@
 @media screen and (max-width: 763px) {
   .tog_icon {
     display: inline-block !important;
+    margin-top: 15px;
   }
   .Drawer {
     display: initial;

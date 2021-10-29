@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {Container,Col,Row} from "react-bootstrap";
 import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import LabeledInput from "./LabeledInput";
 import { LabelBox } from "./styled";
 import LabeledSelect from "./LabeledSelect";
@@ -10,24 +10,41 @@ import { initState as initialValues } from "./data";
 import { validationSchema } from "./validations";
 import { Form, Formik, ErrorMessage } from "formik";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import {motion} from 'framer-motion'
 
-const theme = createTheme();
+
 
 export default function SignUp() {
   const onSubmit = (val) => console.log(val);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main">
+    
+      <Container fluid  style={{ backgroundColor: "#9c27b0", height: "fit-content" }}>
+        <motion.div  
+        initial={{ opacity:0 }}
+        animate={{ opacity:1 }}
+        transition={{ delay:0.3 }}
+        >
+        <Row>
+          <Col md={3}></Col>
+          <Col md={6}>
+          <motion.div
+              initial={{ x:'150vh'}}
+              animate={{ x: -10}}
+              transition={{ delay:0.4, type:'spring',stiffness:110}}
+              
+              >
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
+            bgcolor: "#e8a8f3",
+            color: " #9c27b0",
             flexDirection: "column",
             alignItems: "center",
             boxShadow: "2px 0px 10px rgb(0,0,0,0.4)",
             padding: "35px",
-            maxWidth: "700px",
+            maxWidth: "100%",
             margin: "5rem auto",
           }}
         >
@@ -126,14 +143,29 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 1, mb: 2 ,
+                  bgcolor: "#9c27b0",
+                  color: " white",
+                  "&:hover": {
+                    bgcolor: "#9c27b0",
+                  },}}
               >
                 Sign Up
               </Button>
+
+              
             </Form>
           </Formik>
+          <NavLink to={`/customer/login`} style={{ textAlign: "center" }}>
+                      Login
+                    </NavLink>
         </Box>
+        </motion.div>
+</Col>
+<Col md={3}></Col>
+</Row>
+</motion.div>
       </Container>
-    </ThemeProvider>
+  
   );
 }

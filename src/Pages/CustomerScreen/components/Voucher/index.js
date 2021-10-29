@@ -11,22 +11,24 @@ import {
 import classes from "./index.module.css";
 import { Prompt } from 'react-router'
 import { useHistory } from "react-router";
+import { motion } from "framer-motion";
 
 const Voucher= () => {
   
   let history=useHistory()
-  const formIsHalfFilledOut=()=>{
-
-    alert('hey!! leaving?')
-  }
   
-
   return (
    <>
    <Prompt
-    when={formIsHalfFilledOut}
+    when={true}
     message="Are you sure you want to leave?"
   />
+   <motion.div
+              initial={{scale:0}}
+              animate={{ scale:1}}
+              transition={{ delay:0.3,type:'spring',stiffness:130}}
+              
+              >
    <Row>
 <Col md={3}></Col>
 <Col md={6} style={{ position:'relative', height:'300px' }}>
@@ -79,6 +81,7 @@ const Voucher= () => {
 <Col md={3}></Col>
 
    </Row>
+   </motion.div>
    </>
   )
 }

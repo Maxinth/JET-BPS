@@ -16,6 +16,7 @@ import classes from "./index.module.css";
 import Bank from "../components/Bank";
 import Card from "../components/Card";
 import Voucher from "../components/Voucher";
+import { motion } from "framer-motion";
 
 
 
@@ -40,6 +41,12 @@ setValue(e)
 
   return (
     <Container fluid>
+      <motion.div
+              initial={{x:'-100vw'}}
+              animate={{ x:0}}
+              transition={{ delay:0.3,type:'spring',stiffness:130}}
+              
+              >
       <Row>
         <Col md={2}></Col>
         <Col md={8} className={classes.Section}>
@@ -95,6 +102,7 @@ setValue(e)
         
         <Col md={2}></Col>
       </Row>
+      </motion.div>
     </Container>
   )
 }

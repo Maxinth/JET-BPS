@@ -1,24 +1,27 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowForwardIos } from "@mui/icons-material";
 import {
   Typography,
   Breadcrumbs,
   Link,
+  Radio,
+  Paper,
   FormControl,
-  InputLabel,
+  RadioGroup,
+  FormLabel,
+  FormControlLabel,
   TextField,
   Button,
   Stack,
-  Select,
-  MenuItem,
+  Skeleton,
   Alert,
   Snackbar,
-  FormHelperText
 } from "@mui/material";
 import classes from "./index.module.css";
-import {generateNumber} from '../../../shared/utility'
+
 import { useSelector,shallowEqual } from "react-redux";
+import {motion} from 'framer-motion'
 import axios from "axios";
 import { authHeader } from "../../../services/auth_service";
 import { useHistory } from "react-router";
@@ -34,49 +37,38 @@ const BuyVoucher=()=>{
     const [data, setData] = React.useState([]);
     const [loading,setLoading]=React.useState(false)
     const [open, setOpen] = useState(false);
-    const [iserror,setIserror] =useState(false)
-    const [open1, setOpen1] = useState(false);
-    const [change,setChange]=useState(false)
-    let history=useHistory()
-    var fullName= user.firstName + ' '+user.lastName
-    const [values, setValues] = React.useState({
-        reference:generateNumber(15),
-        email: user.email,
-        amt_2:0,
-    amt_3:0,
-    amt_1:null,
-    phone:user.phone,
-    city:user.city,
-    name:fullName,
-    code:user.postCode,
-subsidyPercentage:0,
-subTypeId:null,
-
-      });
-      
-      const formIsHalfFilledOut=()=>{
     
-        alert('hey!! leaving?')
-      }
-      const handleSubmit = () => {
-        if(values.amt_1===null ||values.subTypeId===null){
-setIserror(true)
-        }else{
-       setLoading(true)
-        axios.post(API_URL +'/subsidy',values,{
-          headers:authHeader(),
-        }).then((res)=>{
-setLoading(false)
-setOpen1(true)
-setChange(true)
-
-        }).catch((err)=>{
-setOpen(true)
-
+    const [open1, setOpen1] = useState(false);
+  
+    const [method,setMethod]= useState('pin')
+    let history=useHistory()
+    const [values, setValues] = React.useState({ 
+ pin:null,
+ amt:null,
+ description:'',
+ wallet:''
+    });
+     
+    useEffect(() => {
+      axios
+        .get(API_URL + "/wallets?userId=" + user.id, {
+          headers: authHeader(),
         })
+        .then((res) => {
+          setData(res.data);
+  
+        });
+     
+    }, [user.id])
+
+    const handleClose = (event, reason) => {
+      if (reason === "clickaway") {
+        return;
       }
-      };
-      
+      setOpen(false);
+      setOpen1(false)
+    };
+
 
    
     const breadcrumbs = [
@@ -88,52 +80,18 @@ setOpen(true)
           Buy Voucher
         </Typography>,
       ];
-      React.useEffect(() => {
-        axios
-          .get(API_URL + "/subsidyType", {
-            headers: authHeader(),
-          })
-          .then((res) => {
-            setData(res.data);
-          });
-        
-      }, []);
+    const onChangeRadio=(e)=>{
+setMethod(e)
+    } 
 const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
-    const onCal=(number)=>{
-     var percentToGet=50
-    var percent = (percentToGet / 100) * number;
-var estimated= number - percent
-setValues({
-    ...values,
-    amt_1: number,
-    amt_2:percent,
-    amt_3:estimated,
-    subsidyPercentage:percentToGet
-  });
-        
-    }
-    const handleClose = (event, reason) => {
-      if (reason === "clickaway") {
-        return;
-      }
-      setOpen(false);
-      setOpen1(false)
-    };
-
     
-
-
-      
-
-    
-
-
+  
     return(
 <>
 <Prompt
-    when={formIsHalfFilledOut}
+    when={true}
     message="Are you sure you want to leave?"
   />
 
@@ -169,9 +127,14 @@ setValues({
         <Spinner title={"Wait a moment"} />
       ) : (
         <>
-        {change?<Success reference={values.reference}/>
-        :
+        
 <Container fluid>
+<motion.div
+              initial={{x:'200vw'}}
+              animate={{ x:0}}
+              transition={{ delay:0.4,duration:1.5, type:'spring',stiffness:100}}
+              
+              >
       <Row>
         <Col md={1}></Col>
         <Col md={10} className={classes.Section}>
@@ -185,178 +148,151 @@ setValues({
               </Breadcrumbs>
             </Col>
           </Row>
+
+          <Row>
+            <Col md={4}></Col>
+      <Col md={4} style={{ padding: "30px" }}>
+          {loading ? (
+            <Skeleton variant="rectangular" width={300} height={100} />
+          ) : (
+            <motion.div
+              initial={{x:'-55'}}
+              animate={{ x:0}}
+              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              
+              >
+            <Paper
+              elevation={4}
+              sx={{ textAlign: "center", height: "160px", padding: "20px" }}
+            >
+              <Typography variant="h4" component="h4">
+              {data.length > 0 ? "$" + data[0].balance : null}
+              </Typography>{" "}
+              <Typography variant="h6" component="h6">
+                Available Balance
+              </Typography>
+            </Paper>
+            </motion.div>
+          )}
+        </Col>
+        <Col md={4}></Col>
+</Row>
+
+
+
           
           <Row style={{ marginTop: "20px",padding:'20px' }}>
-        
-            <Stack spacing={3}>
-         <Row>
-              <Col md={6}>
+        <Col md={1}></Col>
+        <Col md={10}>
+        <Stack spacing={3}>
+          <Row>
+<Col md={6}>
+<Stack spacing={3}>
+<Col md={12}>
               <FormControl fullWidth>
                     <TextField
-
-                      value={values.reference}
-                      label="Reference Number"
+                      value={values.wallet}
+                      label="Wallet to Credit (Optional)"
                       variant="filled"
-                      disabled
+                      onChange={handleChange('wallet')}
                   
                     />
                   </FormControl>
               </Col>
-              <Col md={6}></Col>
-              </Row>
-              <Row>
-              <Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                      value={fullName}
-                      label="Beneficiary Name"
-                      variant="standard"
-                      disabled
-                      onChange={handleChange('name')}
-                    />
-                  </FormControl>
-              </Col>
-              <Col md={5}></Col>
-              </Row>
-
-              <Row style={{ paddingTop:"20px" }}>
-              <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
-              <Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                      defaultValue={values.email}
-                      label="Email Address"
-                      variant="standard"
-                      disabled
-                     
-                    />
-                  </FormControl>
-              </Col>
-              <Col md={6}>
-
-              <FormControl fullWidth>
-                    <TextField
-                      value={values.phone}
-                      label="Phone Number"
-                      variant="standard"
-                      disabled
-                      
-                    />
-                  </FormControl>
-              </Col>
-              </Stack>
-</Row>
-
-<Row>
-<Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
-              <Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                      value={values.city}
-                      label="Town/City"
-                      variant="filled"
-                      disabled
-                     
-                    />
-                  </FormControl>
-              </Col>
-              <Col md={6}>
-
-              <FormControl fullWidth>
-                    <TextField
-                      value={values.code}
-                      label="Postal Code"
-                      variant="filled"
-                      disabled
-                
-                    />
-                  </FormControl>
-              </Col>
-              </Stack>
-</Row>
-
-<Row>
-<Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
-<Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                   
-                    required
-                      value={values.amt_1}
-                      label="Application Amount"
-                      variant="standard"
-                      type="number"
-                      onChange={(e)=>onCal(e.target.value)}
-                      error={iserror}
-                      helperText={iserror?"must not be empty":null}
-                      
-                    />
-                  </FormControl>
-              </Col>
-              <Col md={6}>
-                
-                  <FormControl variant="standard" fullWidth error={iserror} required>
-                    <InputLabel id="demo-simple-select-helper-label">
-                     Select Purpose
-                    </InputLabel>
-                    <Select
-                    
-                      labelId="demo-simple-select-helper-label"
-                      id="demo-simple-select-helper"
-                      value={values.subTypeId}
-                      label="Purpose"
-                      onChange={(e)=>setValues({
-                        ...values,
-                        subTypeId:e.target.value
-                      })
-                    }
-                    
-                    >
-                      <MenuItem value={null}>None</MenuItem>
-                      {data.map((dat)=>
-
-     <MenuItem key={dat.id} value={dat.id}>{dat.name}</MenuItem>
-
-                      )}
-                
-                    </Select>
-                    {iserror? <FormHelperText>you must select something</FormHelperText>:null}
-                  </FormControl>
-              </Col>
-              </Stack>
-              </Row>
-              <Row>
-              <Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                disabled
-                      value={values.amt_2}
-                      label="Estimated Deposit"
-                      variant="filled"
-                    
-                    />
-                  </FormControl>
-              </Col>
-              <Col md={6}></Col>
-              </Row>
-              <Row>
-              <Col md={6}>
-              <FormControl fullWidth>
-                    <TextField
-                    disabled
-                      value={values.amt_3}
-                      label="Estimated Subsidy Amount"
-                      variant="standard"
-                      
-                    />
-                  </FormControl>
-              </Col>
               
-              <Col md={6}></Col>
-</Row>
-              </Stack>
+          
+          
+              <Col md={12}>
+              <FormControl fullWidth>
+                    <TextField
+                    required
+type='number'
+                      value={values.amt}
+                      label="Voucher Amount"
+                      variant="standard"
+                    
+                      onChange={handleChange('amt')}
+                    />
+                  </FormControl>
+              </Col>
+              <Col md={12}>
+              <FormControl fullWidth>
+                    <TextField
+                    required
+                      value={values.description}
+                      multiline
+                      rows={3}
+                      label="Description"
+                      variant="filled"
+                      onChange={handleChange('description')}
+                    />
+                  </FormControl>
+              </Col>
+          
+
+</Stack>
+
+</Col>
+<Col md={6}>
+  <Stack spacing={3}>
+  <Col md={12}>
+          <FormControl component="fieldset">
+  <FormLabel component="legend">Verification Method</FormLabel>
+  <RadioGroup
+    value={method}
+    onChange={(e)=>onChangeRadio(e.target.value)}
+  >
+    <FormControlLabel value="pin" control={<Radio />} label="Transaction Pin" />
+    <Stack direction={{ row:'row-reverse' }} spacing={4}>
+      <FormControlLabel value="otp" control={<Radio />} label=" One Time Password (OTP)" />
+    
+   {method=== 'otp'
+   ?
+   
+   <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:0.3,duration:0.2, type:'spring',stiffness:100}}
+              
+              >
+   <Button variant="contained">Send OTP</Button>
+   </motion.div>
+   
+   
+   :null}
+    </Stack>
+  </RadioGroup>
+</FormControl>
+          </Col>
+          <Col md={12}>
+              <FormControl fullWidth>
+                    <TextField
+                  required
+                      value=''
+                      label="Pin/OTP"
+                      variant="filled"
+                      name="pin"
+                      onChange={handleChange('pin')}
+                  
+                    />
+                  </FormControl>
+              </Col>
+  </Stack>
+</Col>
+
+          </Row>
+            
+      
+              
+          
               
               <Col md={12} style={{ paddingTop: "30px" }}>
+              <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:1.8}}
+              
+              >
                 <Button variant="outlined" color="error" onClick={()=>history.goBack()}>
                   Return
                 </Button>
@@ -364,19 +300,24 @@ setValues({
                   variant="contained"
                   color="primary"
                   sx={{ float: "right" }}
-                  onClick={handleSubmit}
+                  onClick=''
                 >
-                  Submit
+                  Buy Voucher
                 </Button>
+                </motion.div>
                 </Col>
+                </Stack>
+                </Col>
+                <Col md={1}></Col>
                 </Row>
               </Col>
           
           <Col md={1}>
         </Col>
       </Row>
+      </motion.div>
     </Container>
-}
+
     </>)}
     
 </>

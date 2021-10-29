@@ -11,23 +11,27 @@ import { useHistory } from "react-router";
 import Cards from 'react-credit-cards';
 import useForm from './useForm'
 import classes from './index.module.css'
+import { motion } from "framer-motion";
 
 
 
 const Card = () => {
   var form=new FormData()
   let history=useHistory()
-  const formIsHalfFilledOut=()=>{
-
-    alert('hey!! leaving?')
-  }
+  
 const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,error}=useForm()
   return (
   <>
   <Prompt
-    when={formIsHalfFilledOut}
+    when={true}
     message="Are you sure you want to leave?"
   />
+   <motion.div
+              initial={{scale:0}}
+              animate={{ scale:1}}
+              transition={{ delay:0.3,type:'spring',stiffness:130}}
+              
+              >
   <Row>
   <Col md={1}>
   
@@ -125,12 +129,20 @@ const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,erro
 </Col>
 <Col md={1}></Col>
   </Row>
-
+  </motion.div>
   <Col md={12} className={classes.footer}>
+  <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:0.3,type:'spring',stiffness:130}}
+              
+              >
   <Button variant="outlined" color="error" onClick={()=>history.goBack()}>
                   Cancel
                 </Button>
+                </motion.div>
       </Col>
+      
   </>
   )
 }

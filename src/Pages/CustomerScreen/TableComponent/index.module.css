@@ -1,8 +1,9 @@
 .tb thead tr th {
   background-color: #9c27b0 !important;
-  border: 0px;
+  border: 0px !important;
   color: white;
-  font-size: 13pt;
+  font-size: 10pt;
+  
 }
 .tb tbody tr td a {
   text-decoration: none;

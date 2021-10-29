@@ -7,13 +7,15 @@ import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
 import { Link } from "react-router-dom";
 import classes from './index.module.css'
+import { format } from "date-fns";
+import { motion } from "framer-motion";
 
 const heading = [
   {
     Header: "Date Applied",
     accessor: "createdDate",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      <Link to={`/trans/${props.row.original.id}`}>{format( new Date(props.value),'dd/MM/yyyy')}</Link>
     ),
   },
   {
@@ -75,7 +77,14 @@ const DashBoard = () => {
 
       <Row>
         <Col md={12} className={classes.content}>
+        <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:0.2,duration:0.3}}
+              
+              >
           <TableComponent loading={loading} data={data} heading={heading} />
+          </motion.div>
         </Col>
       </Row>
     </>

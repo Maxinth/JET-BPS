@@ -13,6 +13,7 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
+import { motion } from "framer-motion"
 
 import { Visibility, VisibilityOff, LockOutlined } from "@mui/icons-material";
 
@@ -22,6 +23,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { useDispatch } from "react-redux";
 import { signin } from "../../../slices/auth";
+import { setwelcome} from "../../../slices/allState";
+
 //import bcrypt from "bcryptjs";
 
 //const salt = bcrypt.genSaltSync(10);
@@ -30,6 +33,7 @@ const CusLogin = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const [auto,setAuto]=useState(true)
   const history = useHistory();
   const [values, setValues] = useState({
     email: "",
@@ -49,6 +53,7 @@ const CusLogin = () => {
       .then(() => {
         history.push("/customer");
         setLoading(false);
+        dispatch(setwelcome(true))
       })
       .catch((err) => {
         setLoading(false);
@@ -93,10 +98,22 @@ const CusLogin = () => {
       {loading ? (
         <Spinner title={"Wait a moment"} />
       ) : (
+        
         <Container style={{ backgroundColor: "#9c27b0", height: "100vh" }}>
+          <motion.div  
+        initial={{ opacity:0 }}
+        animate={{ opacity:1 }}
+        transition={{ delay:0.3 }}
+        >
           <Row>
             <Col md={4}></Col>
             <Col md={4}>
+              <motion.div
+              initial={{ y:'150vh'}}
+              animate={{ y: -10}}
+              transition={{ delay:0.4, type:'spring',stiffness:110}}
+              
+              >
               <Box
                 sx={{
                   marginTop: "30%",
@@ -120,10 +137,9 @@ const CusLogin = () => {
                 <Box
                   component="form"
                   onSubmit={handleSubmit}
-                  autoComplete="off"
-                  noValidate
                   sx={{ mt: 5 }}
                 >
+                
                   <FormControl sx={{ mt: 2, width: "100%" }}>
                     <InputLabel
                       htmlFor="outlined-adornment-email"
@@ -149,10 +165,12 @@ const CusLogin = () => {
                     </InputLabel>
                     <FilledInput
                       id="outlined-adornment-password"
+                      readOnly={auto}
                       name="password"
                       type={values.showPassword ? "text" : "password"}
                       value={values.password}
                       onChange={handleChange("password")}
+                      onFocus={()=>setAuto(false)}
                       endAdornment={
                         <InputAdornment position="end">
                           <IconButton
@@ -172,6 +190,7 @@ const CusLogin = () => {
                       label="Password"
                     />
                   </FormControl>
+                 
                   <Button
                     type="submit"
                     fullWidth
@@ -187,8 +206,9 @@ const CusLogin = () => {
                   >
                     Login
                   </Button>
+                  
                   <Stack direction="row" spacing={2}>
-                    <NavLink to={`/cs/signup`} style={{ marginLeft: "5%" }}>
+                    <NavLink to={`/customer/signup`} style={{ marginLeft: "5%" }}>
                       Not Logged in? Signup
                     </NavLink>
                     <NavLink to={`/customer/forgot`} style={{ marginLeft: "5%" }}>
@@ -197,10 +217,13 @@ const CusLogin = () => {
                   </Stack>
                 </Box>
               </Box>
+              </motion.div>
             </Col>
             <Col md={4}></Col>
           </Row>
+          </motion.div>
         </Container>
+        
       )}
     </>
   );

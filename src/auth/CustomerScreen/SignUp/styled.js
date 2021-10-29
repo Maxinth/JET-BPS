@@ -70,7 +70,7 @@ const Text = styled.p`
   font-weight: 500;
   min-width: 150px;
   text-align: center;
-  color: grey;
+  color: #9c27b0;
 
   & + * {
     flex: 1;
@@ -161,7 +161,7 @@ const ErrorBox = styled.div`
   color: red;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.1rem;
 `;
 export {
   Form,

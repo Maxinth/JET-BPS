@@ -22,19 +22,15 @@ function App() {
   const routes = (
     <Switch>
 
-      <Route path="/customer/signup" component={SignUp} />
+      <PrivateRoute exact path="/customer/signup" component={SignUp} />
       <PrivateRoute exact path="/customer/login" component={Login} />
+      <PrivateRoute exact path="/customer/forgot" component={ForgotPassword} />
       <ProtectedRoute exact path="/trans/:id" component={PrintPage} />
       <ProtectedRoute exact path="/application" component={Application} />
       <ProtectedRoute exact path="/fund" component={Funds} />
       <ProtectedRoute exact path="/buy" component={BuyVoucher} />
       <ProtectedRoute path="/customer" component={DashBoard} />
-      <PrivateRoute
-        exact
-        path={`/customer/forgot`}
-        component={ForgotPassword}
-      />
-
+      
       <ProtectedRoute path="/home" component={DashBoard} />
       <Route exact path="/">
         <Redirect to={`/customer`} />

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Table, Row, Col } from "react-bootstrap";
-import { useTable, usePagination, useGlobalFilter } from "react-table";
+import { useTable, usePagination, useGlobalFilter,useSortBy } from "react-table";
 import classes from "./index.module.css";
 import {
   Paper,
@@ -10,19 +10,30 @@ import {
   TextField,
   InputAdornment,
 } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Search,
+  ArrowDropDown,
+  ArrowDropUp } from "@mui/icons-material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateRangePicker from "@mui/lab/DateRangePicker";
+import { motion, AnimatePresence } from 'framer-motion'
 
 const TableComponent = (props) => {
   const [value, setValue] = useState([null, null]);
   const data = useMemo(() => props.data, [props.data]);
   const columns = useMemo(() => props.heading, [props.heading]);
-
+  const spring = React.useMemo(
+    () => ({
+      type: 'spring',
+      damping: 50,
+      stiffness: 100,
+    }),
+    []
+  )
   const tableInstance = useTable(
     { columns, data },
     useGlobalFilter,
+    useSortBy,
     usePagination
   );
 
@@ -119,9 +130,24 @@ const TableComponent = (props) => {
                           {headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                               {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps()}>
+                                <motion.th {...column.getHeaderProps({
+                                  layoutTransition: spring,
+                                  style: {
+                                    minWidth: column.minWidth,
+                                  },
+                                })
+                              
+                              
+                            }
+                                  >
+                                  <div {...column.getSortByToggleProps()}>
+                                  <span >
                                   {column.render("Header")}
-                                </th>
+                                    {column.isSorted?(column.isSortedDesc? (<ArrowDropUp/>):
+                                    (<ArrowDropDown/>)):(<ArrowDropUp/>) }
+                                  </span>
+                                  </div>
+                                </motion.th>
                               ))}
                             </tr>
                           ))}
@@ -130,20 +156,23 @@ const TableComponent = (props) => {
                           {...getTableBodyProps()}
                           className={classes.tBody}
                         >
+                           <AnimatePresence>
                           {page.map((row) => {
                             prepareRow(row);
                             return (
-                              <tr {...row.getRowProps()}>
+                              <motion.tr {...row.getRowProps({
+                                layoutTransition: spring})}>
                                 {row.cells.map((cell) => {
                                   return (
-                                    <td {...cell.getCellProps()}>
+                                    <motion.td {...cell.getCellProps()}>
                                       {cell.render("Cell")}
-                                    </td>
+                                    </motion.td>
                                   );
                                 })}
-                              </tr>
+                              </motion.tr>
                             );
                           })}
+                           </AnimatePresence>
                         </tbody>
                       </Table>
                     </div>

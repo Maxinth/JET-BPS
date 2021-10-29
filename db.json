@@ -55,7 +55,7 @@
     {
       "id": 1,
       "number": "5083943285",
-      "description":"customer account",
+      "description": "customer account",
       "type": "saving",
       "active": true,
       "createdDate": "4/9/2020",
@@ -80,7 +80,7 @@
       "pin": "1993",
       "status": "pending",
       "userId": 2,
-      "description":"customer account"
+      "description": "customer account"
     },
     {
       "id": 2,
@@ -95,7 +95,7 @@
       "pin": "1993",
       "status": "pending",
       "userId": 1,
-      "description":"customer account"
+      "description": "customer account"
     }
   ],
   "vouchers": [
@@ -853,6 +853,20 @@
       "subsidyPercentage": 50,
       "subTypeId": 2,
       "id": 44
+    },
+    {
+      "reference": "E7ZEZI9JL99IMCB",
+      "email": "folayan@gmail.com",
+      "amt_2": 33888.5,
+      "amt_3": 33888.5,
+      "amt_1": "67777",
+      "phone": "08124567893",
+      "city": "oyo",
+      "name": "folayan okunade",
+      "code": "23474",
+      "subsidyPercentage": 50,
+      "subTypeId": 3,
+      "id": 45
     }
   ],
   "deposits": [

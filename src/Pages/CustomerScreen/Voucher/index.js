@@ -7,13 +7,15 @@ import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
 import { Link,NavLink } from "react-router-dom";
 import classes from './index.module.css'
+import { format } from "date-fns";
+import { motion } from "framer-motion";
 
 const heading = [
   {
     Header: "Date Applied",
     accessor: "createdDate",
     Cell: (props) => (
-      <Link to={`/trans/${props.row.original.id}`}>{props.value}</Link>
+      <Link to={`/trans/${props.row.original.id}`}>{format( new Date(props.value),'dd/MM/yyyy')}</Link>
     ),
   },
   {
@@ -79,7 +81,7 @@ const Voucher = () => {
         setLoading1(false);
       });
   }, [user.id]);
-  let approved_data1 = data1.filter((dat) => dat.status === "approved");
+  
   let pending_data1 = data1.filter((dat) => dat.status === "pending");
   
   let table=(<NavLink to="/buy" >
@@ -94,6 +96,12 @@ sx={{ float:'right' }}>Buy Voucher</Button></NavLink>)
           {loading && loading1 ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+              initial={{x:'150'}}
+              animate={{ x:0}}
+              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              
+              >
             <Paper
               elevation={4}
               sx={{ textAlign: "center", height: "160px", padding: "20px" }}
@@ -105,6 +113,7 @@ sx={{ float:'right' }}>Buy Voucher</Button></NavLink>)
                 {data.length > 0 ? "$" + data[0].balance : null}
               </Typography>
             </Paper>
+            </motion.div>
           )}
         </Col>
        <Col md={4}></Col>
@@ -112,6 +121,12 @@ sx={{ float:'right' }}>Buy Voucher</Button></NavLink>)
           {loading && loading1 ? (
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
+            <motion.div
+              initial={{x:'-150'}}
+              animate={{ x:0}}
+              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              
+              >
             <Paper
               elevation={4}
               sx={{ textAlign: "center", Height: "160px", padding: "20px" }}
@@ -142,6 +157,7 @@ sx={{ float:'right' }}>Buy Voucher</Button></NavLink>)
                 </tr>
               </table>
             </Paper>
+            </motion.div>
           )}
         </Col>
       </Row>
@@ -151,7 +167,14 @@ sx={{ float:'right' }}>Buy Voucher</Button></NavLink>)
 
       <Row>
         <Col md={12} className={classes.content}>
+        <motion.div
+              initial={{opacity:0}}
+              animate={{ opacity:1}}
+              transition={{ delay:0.2,duration:0.3}}
+              
+              >
           <TableComponent tableBtn={table} loading={loading} data={data} heading={heading} />
+          </motion.div>
         </Col>
       </Row>
     </>
