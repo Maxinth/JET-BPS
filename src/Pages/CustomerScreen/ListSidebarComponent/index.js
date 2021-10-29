@@ -2,10 +2,6 @@ import React from "react";
 import {
   List,
   Box,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  ListItemButton,
 } from "@mui/material";
 import {
   Dashboard,
@@ -13,32 +9,18 @@ import {
   Send,
   AccountBalanceWallet,
   Help,
-  Logout,
 } from "@mui/icons-material";
 import classes from "./index.module.css";
-import { useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch} from "react-router-dom";
 import ListComponent from "../../../components/ListComponent";
-import { signout} from "../../../slices/auth";
-import { isloading,setDrawer } from "../../../slices/allState";
+import {setDrawer } from "../../../slices/allState";
 import { useDispatch } from "react-redux";
 
 const ListSidebarComponent = () => {
   const { path } = useRouteMatch();
   let dispatch = useDispatch();
-  let history = useHistory();
 
-  const logOut = () => {
-    dispatch(isloading(true))
-    setTimeout(()=>{
-      dispatch(signout())
-      .unwrap()
-      .then(() => {
-        dispatch(isloading(false))
-        history.push("/customer/login");
-      });
-    history.push("/customer/login");
-    },3000)
-  };
+  
   return (
     <>
       <Box sx={{ width: "100%", height: "100vh", position: "relative" }}
@@ -76,40 +58,13 @@ const ListSidebarComponent = () => {
           />
         </List>
 
-        <List style={{ marginTop: "21vh" }}>
+        <List style={{ position: "absolute",bottom:'0' ,width:'100%' }}>
           <ListComponent
             path={`${path}/help`}
             Icon={<Help sx={{ color: "white" }} />}
             event="help"
             title="About"
           />
-        </List>
-
-        <List
-          sx={{
-            width: "100%",
-            position: "absolute",
-            bottom: "0px",
-            backgroundColor: "white",
-            color: "red",
-            "&:hover": {
-              cursor: "pointer",
-            },
-          }}
-          onClick={logOut}
-        >
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <Logout
-                  sx={{
-                    color: "red",
-                  }}
-                />
-              </ListItemIcon>
-              <ListItemText primary="Sign Out" />
-            </ListItemButton>
-          </ListItem>
         </List>
       </Box>
     </>

@@ -4,7 +4,7 @@ import classes from "./index.module.css";
 import SidebarComponent from "../SidebarComponent";
 import Dashboard from "../Dashboard";
 import PageNotFound from "../../PageNotFound";
-import { PersonSharp, MenuSharp } from "@mui/icons-material";
+import {MenuSharp } from "@mui/icons-material";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { Drawer, Box, Snackbar, Alert } from "@mui/material";
 import ListSidebarComponent from "../ListSidebarComponent";
@@ -15,6 +15,7 @@ import Spinner from "../../../components/Spinner";
 import Voucher from "../Voucher";
 import { useDispatch } from "react-redux";
 import { setwelcome,setDrawer} from "../../../slices/allState";
+import AccountMenu from "../Menu";
 
 
 const MainDashboard = () => {
@@ -22,8 +23,9 @@ const MainDashboard = () => {
   const { loading,iswelcome,openDrawer } = useSelector((state) => state.other, shallowEqual);
   const { path } = useRouteMatch();
   const dispatch = useDispatch();
-
   
+
+ 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -77,18 +79,12 @@ const MainDashboard = () => {
                   >
                     <MenuSharp onClick={()=>dispatch(setDrawer(true))} />
                   </span>
-                  <h6
-                    style={{
-                      float: "right",
-                      margin: "15px",
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  >
-                    {user.firstName.toUpperCase()},{user.lastName.toUpperCase()}{" "}
-                    <PersonSharp />
-                  </h6>
+
+
+                  <AccountMenu user={user}/>
+                  
+                  
+        
                 </div>
               </Col>
               <Switch>
