@@ -174,9 +174,9 @@ setValues({
         :
 <Container fluid style={{ backgroundColor:'#9c27b0',height:'100vh'}}>
 <motion.div
-              initial={{x:'150'}}
+              initial={{x:'100vw'}}
               animate={{ x:0}}
-              transition={{ delay:0.2,type:'spring',stiffness:110}}
+              transition={{ delay:0.2,type:'spring',stiffness:50}}
               
               >
       <Row>

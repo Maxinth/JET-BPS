@@ -8,12 +8,10 @@ export const getUser = (id) => {
   });
 };
 
-export const register = (name, email, password) => {
+export const register = (data={}) => {
   return axios
-    .post(API_URL + "/register", {
-      name,
-      email,
-      password,
+    .post(API_URL + "/signup", {
+      data
     })
     .then((res) => {
       return res.data;

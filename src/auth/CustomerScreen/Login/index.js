@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 import {
   Stack,
@@ -6,6 +6,7 @@ import {
   Avatar,
   Button,
   Box,
+  TextField,
   FilledInput,
   InputLabel,
   InputAdornment,
@@ -140,23 +141,16 @@ const CusLogin = () => {
                   sx={{ mt: 5 }}
                 >
                 
-                  <FormControl sx={{ mt: 2, width: "100%" }}>
-                    <InputLabel
-                      htmlFor="outlined-adornment-email"
-                      sx={{ color: " #9c27b0" }}
-                    >
-                      Username
-                    </InputLabel>
-                    <FilledInput
-                      name="email"
-                      id="outlined-adornment-email"
-                      type="text"
+                  <FormControl fullWidth sx={{ mb:2 }}>
+                    <TextField
+                            type="text"
+                            variant="filled"
                       onChange={handleChange("email")}
                       label="Username"
                       value={values.email}
                     />
                   </FormControl>
-                  <FormControl sx={{ mt: 3, width: "100%" }}>
+                  <FormControl fullWidth variant="filled">
                     <InputLabel
                       htmlFor="outlined-adornment-password"
                       sx={{ color: " #9c27b0" }}
@@ -164,9 +158,8 @@ const CusLogin = () => {
                       Password
                     </InputLabel>
                     <FilledInput
-                      id="outlined-adornment-password"
+                    
                       readOnly={auto}
-                      name="password"
                       type={values.showPassword ? "text" : "password"}
                       value={values.password}
                       onChange={handleChange("password")}
@@ -207,11 +200,11 @@ const CusLogin = () => {
                     Login
                   </Button>
                   
-                  <Stack direction="row" spacing={2}>
-                    <NavLink to={`/customer/signup`} style={{ marginLeft: "5%" }}>
+                  <Stack direction="row" spacing={2} >
+                    <NavLink to={`/customer/signup`} style={{ marginLeft: "1%" }}>
                       Not Logged in? Signup
                     </NavLink>
-                    <NavLink to={`/customer/forgot`} style={{ marginLeft: "5%" }}>
+                    <NavLink to={`/customer/forgot`} style={{ float: "right" }}>
                       Forgot password?
                     </NavLink>
                   </Stack>

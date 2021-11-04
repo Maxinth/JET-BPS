@@ -58,17 +58,22 @@ const ListSidebarComponent = () => {
           />
         </List>
 
-        <List style={{ position: "absolute",bottom:'0' ,width:'100%' }}>
+        <List sx={{ position: "absolute",bottom:'0' ,
+        width:'100%',
+        boxShadow:' 0px 5px 7px rgba(0,0,0.4)'
+      
+      
+      }}>
           <ListComponent
             path={`${path}/help`}
             Icon={<Help sx={{ color: "white" }} />}
             event="help"
-            title="About"
+            title="Support Center"
           />
         </List>
       </Box>
     </>
-  );
-};
+  )
+}
 
 export default ListSidebarComponent;

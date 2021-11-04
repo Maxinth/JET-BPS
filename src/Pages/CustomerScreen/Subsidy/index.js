@@ -5,7 +5,7 @@ import TableComponent from "./TableComponent";
 import { Paper, Typography, Skeleton,Button } from "@mui/material";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
-import { Link ,NavLink} from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import classes from "./index.module.css";
 import {
   BarChart,
@@ -107,7 +107,7 @@ const Subsidy = () => {
             transition={{ delay:0.3, type:'spring',stiffness:130}}
             
             >
-            <Paper elevation={4} sx={{ height: "300px", padding: "10px" }}>
+            <Paper elevation={4} sx={{ height: "400px", padding: "10px" }}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   width={100}
@@ -139,9 +139,9 @@ const Subsidy = () => {
             <Skeleton variant="rectangular" width={300} height={100} />
           ) : (
             <motion.div
-            initial={{ x:'55'}}
-            animate={{ x: 0}}
-            transition={{ delay:0.3, type:'spring',stiffness:110}}
+            initial={{ y:'55'}}
+            animate={{ y: 0}}
+            transition={{ delay:0.3, type:'spring',stiffness:140}}
             
             >
               

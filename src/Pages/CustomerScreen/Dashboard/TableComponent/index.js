@@ -16,8 +16,10 @@ import { Search,
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateRangePicker from "@mui/lab/DateRangePicker";
-import { motion, AnimatePresence } from 'framer-motion'
 import ModalDisplay from "../../ModalDisplay";
+
+
+
 
 const TableComponent = (props) => {
   const [value, setValue] = useState([null, null]);
@@ -25,22 +27,15 @@ const TableComponent = (props) => {
   const columns = useMemo(() => props.heading, [props.heading]);
   const [show, setShow] = useState(false);
 const [selectedRow, setSelectedRow] = useState({});
-  const spring = React.useMemo(
-    () => ({
-      type: 'spring',
-      damping: 50,
-      stiffness: 100,
-    }),
-    []
-  )
+  
+  
   const handleClose = () => setShow(false);
 const handleShow = (selected) => {
   setSelectedRow(selected);
-  console.log(selectedRow)
   setShow(true);
   };
   const tableInstance = useTable(
-    { columns, data },
+    { columns, data},
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -152,9 +147,9 @@ const handleShow = (selected) => {
                 }}
                 renderInput={(startProps, endProps) => (
                   <React.Fragment>
-                    <TextField {...startProps} variant="standard" fullWidth />
+                    <TextField {...startProps} variant="filled" fullWidth />
                     <Box sx={{ mx: 2 }}> to </Box>
-                    <TextField {...endProps} variant="standard" fullWidth />
+                    <TextField {...endProps} variant="filled" fullWidth />
                   </React.Fragment>
                 )}
               />
@@ -176,7 +171,7 @@ const handleShow = (selected) => {
                   </InputAdornment>
                 ),
               }}
-              variant="standard"
+              variant="filled"
               value={globalFilter || ""}
               onChange={(e) => setGlobalFilter(e.target.value)}
             />
@@ -211,12 +206,7 @@ const handleShow = (selected) => {
                           {headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                               {headerGroup.headers.map((column) => (
-                                <motion.th {...column.getHeaderProps({
-                                  layoutTransition: spring,
-                                  style: {
-                                    minWidth: column.minWidth,
-                                  },
-                                })
+                                <th {...column.getHeaderProps()
                               
                               
                             }
@@ -228,7 +218,7 @@ const handleShow = (selected) => {
                                     (<ArrowDropDown/>)):(<ArrowDropUp/>) }
                                   </span>
                                   </div>
-                                </motion.th>
+                                </th>
                               ))}
                             </tr>
                           ))}
@@ -237,28 +227,27 @@ const handleShow = (selected) => {
                           {...getTableBodyProps()}
                           className={classes.tBody}
                         >
-                           <AnimatePresence>
+                           
                           {page.map((row) => {
                             prepareRow(row);
                             return (
-                              <motion.tr {...row.getRowProps({
-                                layoutTransition: spring})} onClick={() =>   handleShow(row.original)} 
+                              <tr {...row.getRowProps()} onClick={() =>   handleShow(row.original)} 
                                 key={row.getRowProps().key}
                                 
                                 >
                                 {row.cells.map((cell) => {
                                   return (
-                                    <motion.td {...cell.getCellProps()}
+                                    <td {...cell.getCellProps()}
                                     
                                     >
                                       {cell.render("Cell")}
-                                    </motion.td>
+                                    </td>
                                   );
                                 })}
-                              </motion.tr>
+                              </tr>
                             );
                           })}
-                           </AnimatePresence>
+                           
                         </tbody>
                       </Table>
                     </div>

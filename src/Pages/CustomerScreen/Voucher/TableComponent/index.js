@@ -153,9 +153,9 @@ const handleShow = (selected) => {
                 }}
                 renderInput={(startProps, endProps) => (
                   <React.Fragment>
-                    <TextField {...startProps} variant="standard" fullWidth />
+                    <TextField {...startProps} variant="filled" fullWidth />
                     <Box sx={{ mx: 2 }}> to </Box>
-                    <TextField {...endProps} variant="standard" fullWidth />
+                    <TextField {...endProps} variant="filled" fullWidth />
                   </React.Fragment>
                 )}
               />
@@ -177,7 +177,7 @@ const handleShow = (selected) => {
                   </InputAdornment>
                 ),
               }}
-              variant="standard"
+              variant="filled"
               value={globalFilter || ""}
               onChange={(e) => setGlobalFilter(e.target.value)}
             />

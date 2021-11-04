@@ -1,8 +1,7 @@
 import React from 'react'
-import classes from './index.module.css'
-import {CloseButton, Modal} from 'react-bootstrap'
-import { Col,Row,Container } from 'react-bootstrap';
-
+//import classes from './index.module.css'
+import {Modal} from 'react-bootstrap'
+import { Col} from 'react-bootstrap';
 import {Button} from '@mui/material'
 
 
@@ -22,7 +21,8 @@ const ModalDisplay=({handleClose,open,children,title})=>{
         keyboard={false}
     
       >
-<Modal.Header style={{ textAlign:'center'}} >
+<Modal.Header style={{ 
+  color:'white',backgroundColor:'#9c27b0'}} >
           <Modal.Title >{title}</Modal.Title>
         
         </Modal.Header>
@@ -40,7 +40,14 @@ const ModalDisplay=({handleClose,open,children,title})=>{
                   >
                     {"<<<"} Return
                   </Button>
-                  <Button variant="contained" sx={{ float: "right" }} onClick={()=>window.print()}>
+                  <Button variant="contained"
+                  onClick={()=>window.print()} 
+                  sx={{ float: "right",
+                  bgcolor:'#9c27b0',
+  '&:hover':{
+    bgcolor:'#9c27b0'
+  }
+  }}>
                     Print this page
                   </Button>
                 </Col>

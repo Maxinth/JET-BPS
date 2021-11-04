@@ -5,10 +5,10 @@ import TableComponent from "./TableComponent";
 import CardSection from "../CardSection";
 import { useSelector, shallowEqual } from "react-redux";
 import { authHeader } from "../../../services/auth_service";
-import { Link } from "react-router-dom";
 import classes from './index.module.css'
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+
 
 
 
@@ -18,7 +18,7 @@ const DashBoard = () => {
   const { user } = useSelector((state) => state.auth, shallowEqual);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = React.useState(false);
+
   
   
 

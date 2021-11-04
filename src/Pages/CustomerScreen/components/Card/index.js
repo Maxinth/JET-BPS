@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 
 
 const Card = () => {
-  var form=new FormData()
+  var form =new FormData()
   let history=useHistory()
   
 const {handleInputChange,handleInputFocus,handleSubmit,handleCallback,state,error}=useForm()

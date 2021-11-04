@@ -68,7 +68,7 @@ const MainDashboard = () => {
           </Col>
 
           <SidebarComponent />
-          <Col md={10} style={{ backgroundColor: "white" }}>
+          <Col md={10}>
             <Row>
               <Col md={12} className={classes.head}>
                 <div>
@@ -86,7 +86,8 @@ const MainDashboard = () => {
                   
         
                 </div>
-              </Col>
+                    </Col>
+                    <Col md={12} className={classes.content}>
               <Switch>
                 <Route exact path={`${path}/`} component={Dashboard} />
                 <Route exact path={`${path}/subsidy`} component={Subsidy} />
@@ -96,6 +97,7 @@ const MainDashboard = () => {
                   <PageNotFound />
                 </Route>
               </Switch>
+              </Col>
             </Row>
           </Col>
         </Row>

@@ -1,0 +1,28 @@
+.password{
+    width: fit-content;
+    text-align: left;
+    font-size: 6pt;
+    padding: 7px;
+    
+
+}
+.password span{
+    display: block;
+    font-style: italic;
+    color: rgb(61, 51, 60);
+}
+.password div{
+    color: black;
+    font-size: 9pt;
+}
+.phoneContainer {
+    width: 100%;       
+}
+
+.input{
+    width: 100%;
+}
+.input:focus{
+    outline: none ;
+}
+

@@ -66,7 +66,8 @@ const AccountMenu=({user})=> {
           sx: {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
+            mt: 1,
+            padding:2,
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,

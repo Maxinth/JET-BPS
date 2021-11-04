@@ -26,7 +26,6 @@ import axios from "axios";
 import { authHeader } from "../../../services/auth_service";
 import { useHistory } from "react-router";
 import Spinner from "../../../components/Spinner";
-import Success from "../Success";
 import { Prompt } from 'react-router'
 
 
@@ -87,6 +86,10 @@ const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
     
+  const handleSubmit=()=>{
+
+    setLoading(true)
+  }
   
     return(
 <>
@@ -130,9 +133,9 @@ const handleChange = (prop) => (event) => {
         
 <Container fluid style={{ backgroundColor:'#9c27b0',height:'100vh'}}>
 <motion.div
-              initial={{x:'200vw'}}
+              initial={{x:'110vw'}}
               animate={{ x:0}}
-              transition={{ delay:0.4,duration:1.5, type:'spring',stiffness:100}}
+              transition={{ delay:0.4, type:'spring',stiffness:100}}
               
               >
       <Row>
@@ -305,7 +308,7 @@ type='number'
                   variant="contained"
                   color="primary"
             
-                  onClick=''
+                  onClick={handleSubmit}
                   sx={{ float: "right",bgcolor:'#9c27b0',
   '&:hover':{
     bgcolor:'#9c27b0'
