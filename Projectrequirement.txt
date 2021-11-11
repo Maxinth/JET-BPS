@@ -1,0 +1,9 @@
+Input element=> Material UI Textfields
+state management=> redux-toolkit
+Layout element=>react bootstrap component
+Icons=>Material UI
+styling=>styled-component, css modules, inline styling,
+
+
+
+

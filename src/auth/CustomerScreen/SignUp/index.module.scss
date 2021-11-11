@@ -1,0 +1,53 @@
+@import '../../../variable';
+
+.Container{
+
+    background-color: $button_color;
+    height: 100vh;
+}
+
+.Box{
+   
+                      margin-top: 5%;
+                      flex-direction: column;
+                      background: white;
+                      align-items: center;
+                      box-shadow: 2px 0px 10px rgba(0,0,0,0.4);
+                      padding: 35px;
+                      display: flex;
+                      flex-wrap: wrap;
+                      border-radius: 10px;
+                      text-decoration: none;
+                   
+}
+
+.password{
+    width: fit-content;
+    
+    text-align: left;
+    font-size: 6pt;
+    padding: 7px;
+    
+
+}
+.password span{
+    display: block;
+    font-style: italic;
+}
+.password div{
+    color: black;
+    font-size: 9pt;
+}
+.phoneContainer {
+    width: 100%;       
+
+}
+
+.input{
+    width: 100%;
+    color: $button_color !important;
+}
+.input:focus{
+    outline: none ;
+}
+

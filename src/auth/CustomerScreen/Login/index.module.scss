@@ -1,0 +1,25 @@
+@import '../../../variable.scss';
+
+
+
+
+.Container{
+
+    background-color: $button_color;
+    height: 100vh;
+}
+
+.Box{
+   
+                      margin-top: 30%;
+                      flex-direction: column;
+                      background: white;
+                      align-items: center;
+                      box-shadow: 2px 0px 10px rgba(0,0,0,0.4);
+                      padding: 35px;
+                      display: flex;
+                      flex-wrap: wrap;
+                      border-radius: 10px;
+                      text-decoration: none;
+                   
+}

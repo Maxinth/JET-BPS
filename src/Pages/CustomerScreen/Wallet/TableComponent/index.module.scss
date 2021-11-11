@@ -1,0 +1,46 @@
+
+
+.table tr td {
+  padding: 15px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.table2 {
+  margin-top: 50%;
+}
+
+.table2 tr td {
+  padding: 15px;
+  font-weight: 400;
+  text-align: left;
+
+}
+
+
+
+.table {
+  height: fit-content;
+
+}
+
+
+@media print {
+  button {
+    display: none !important;
+  }
+
+  .table tr td {
+    padding: 15px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .table2 {
+    padding: 15px;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 0%;
+  }
+
+}

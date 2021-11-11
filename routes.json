@@ -1,0 +1,4 @@
+{
+  "/customer/:resource": "600/:resource",
+  "/:resource/:id": "600/:resource/:id"
+}
